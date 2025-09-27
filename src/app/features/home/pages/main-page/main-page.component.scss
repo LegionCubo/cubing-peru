@@ -1,0 +1,12 @@
+.main{
+  width: calc(100% - 100px);
+  min-height: 100vh;
+  height: 300vh;
+  margin-left: 100px;
+
+  @media only screen and (max-width:900px){
+    width: 100%;
+    margin-left: 0px;
+
+  }
+}

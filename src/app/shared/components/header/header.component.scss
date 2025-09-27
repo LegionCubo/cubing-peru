@@ -1,0 +1,24 @@
+.menu__user{
+    width: 100%;
+    padding: 25px;
+    padding-right: 35px;
+    display: flex;
+    justify-content: space-between;
+    z-index: 900;
+    position: fixed;
+    @media only screen and (max-width:900px) {
+        transition: background-color .5s;
+        padding-right: 25px;
+    }
+
+    .btn__mobile__menu{
+        display: flex;
+        gap: 10px;
+        align-items: center;
+    }
+}
+.menu__user.active{
+    @media only screen and (max-width:900px) {
+        background-color: #111827;
+    }
+}

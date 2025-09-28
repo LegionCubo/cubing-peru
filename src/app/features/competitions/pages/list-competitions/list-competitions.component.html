@@ -1,0 +1,10 @@
+<section class="section section-competitions">
+    <h1 class="title">Competencias Oficiales</h1>
+    <p class="font-secondary paragraph">Lista de todas las competencias oficiales de la WCA, son torneos que siguen un reglamento por la world cube association</p>
+    
+    <competitions-form-list (formSended)="formSended($event)"></competitions-form-list>
+
+    @if(listCompetitions().length > 0){
+        <table-competitions [competitions]="listCompetitions()"></table-competitions>
+    }
+</section>

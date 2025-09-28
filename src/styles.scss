@@ -41,6 +41,7 @@ html {
 
     --text-color: white;
     --text-secondary-color: #757575;
+    --table-color: #44474E;
     
     @include mat.fab-overrides((
         container-color: var(--secondary-color),
@@ -51,6 +52,24 @@ html {
         supporting-text-font: 'Abel-Regular',
     ));
 
+    @include mat.table-overrides((
+        header-headline-font: 'Anton-Regular',
+        header-headline-size: 25px,
+        background-color: var(--table-color),
+        row-item-outline-color: white,
+        row-item-label-text-font: 'Abel-Regular',
+        row-item-label-text-size:16px
+    ));
+    @include mat.select-overrides((
+        panel-background-color: var(--table-color),
+        trigger-text-font: 'Abel-Regular',
+    ));
+
+    @include mat.form-field-overrides((
+        filled-container-color: var(--table-color),
+        container-text-font: 'Abel-Regular',
+        filled-label-text-font: 'Abel-Regular',
+    ));
 }
 
 /*PARA TITULOS, SUBTITULOS Y ENCABEZADOS*/
@@ -71,4 +90,18 @@ button{
   background-color: transparent;
   border: none;
   padding: none;
+}
+
+h1, h2, h3, h4, h5, h6{
+    font-family: 'Anton-Regular', sans-serif;
+    font-weight: 100;
+    text-transform: uppercase;
+}
+
+.section{
+    padding: 50px 30px;
+}
+
+body{
+    background-color: var(--secondary-color);
 }

@@ -1,0 +1,76 @@
+<table mat-table [dataSource]="dataSource" class="mat-elevation-z8"  matSort (matSortChange)="announceSortChange($event)">
+
+    <!-- Definir columnas dinámicamente -->
+    <ng-container matColumnDef="competitionDate">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by competitionDate">
+        FECHA
+        </th>
+        <td mat-cell *matCellDef="let element"> {{ element.competitionDate | rangeDate: element.competitionEndDate }} </td>
+    </ng-container>
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by name">
+        NOMBRE
+        </th>
+        <td mat-cell *matCellDef="let element" class="name-competition"> 
+            <a [href]="'https://www.worldcubeassociation.org/competitions/'+element.id" target="_blank">{{element.name}}</a>
+            @if(today < element.competitionDate){
+                <span class="status-competition">
+                    Pendiente
+                </span>
+            }@else if(today >= element.competitionDate && today <= element.competitionEndDate){
+                <span class="status-competition in_course">En Curso</span>
+            }@else {
+                <span class="status-competition finished">Finalizado</span>
+            }
+        </td>
+    </ng-container>
+
+    <!-- Weight Column -->
+    <ng-container matColumnDef="eventCompetitions">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by eventCompetitions">
+        EVENTOS
+        </th>
+        <td mat-cell *matCellDef="let element" class="events-competition">
+            @for(event of element.eventCompetitions; track event){
+                <span [class]="'cubing-icon event-'+event" [matTooltip]="event | categoryWCA" matTooltipPosition="above"></span>
+            }
+        </td>
+    </ng-container>
+
+    <!-- Symbol Column -->
+    <ng-container matColumnDef="cityName">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by cityName">
+            CIUDAD
+        </th>
+        <td mat-cell *matCellDef="let element"> {{element.cityName}} </td>
+    </ng-container>
+    
+    <ng-container matColumnDef="resultados">
+        <th mat-header-cell *matHeaderCellDef>
+            RESULTADOS
+        </th>
+        <td mat-cell *matCellDef="let element">
+            @if(today < element.competitionDate){
+                <span class="status-competition">
+                    Pendiente
+                </span>
+            }@else if(today >= element.competitionDate && today <= element.competitionEndDate){
+                <a [href]="'https://live.worldcubeassociation.org/link/competitions/'+element.id" target="_blank">WCA Live</a>
+            }@else {
+                <a [href]="'https://www.worldcubeassociation.org/competitions/'+element.id+'/results/all'" target="_blank">WCA</a>
+            }
+        </td>
+    </ng-container>
+
+
+    <!-- Filas -->
+    <tr mat-header-row *matHeaderRowDef="columnsTable"></tr>
+    <tr mat-row *matRowDef="let row; columns: columnsTable;"></tr>
+</table>
+
+<mat-paginator [pageSizeOptions]="[25, 50, 100]"
+                 showFirstLastButtons
+                 aria-label="Select page of periodic elements">
+  </mat-paginator>

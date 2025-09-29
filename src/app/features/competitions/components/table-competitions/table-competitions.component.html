@@ -57,9 +57,13 @@
                     Pendiente
                 </span>
             }@else if(today >= element.competitionDate && today <= element.competitionEndDate){
-                <a [href]="'https://live.worldcubeassociation.org/link/competitions/'+element.id" target="_blank">WCA Live</a>
+                <a [href]="'https://live.worldcubeassociation.org/link/competitions/'+element.id" target="_blank" class="link_wca">
+                    <shared-icon-wca></shared-icon-wca> WCA Live
+                </a>
             }@else {
-                <a [href]="'https://www.worldcubeassociation.org/competitions/'+element.id+'/results/all'" target="_blank">WCA</a>
+                <a [href]="'https://www.worldcubeassociation.org/competitions/'+element.id+'/results/all'" target="_blank" class="link_wca">
+                    <shared-icon-wca></shared-icon-wca> WCA
+                </a>
             }
         </td>
     </ng-container>

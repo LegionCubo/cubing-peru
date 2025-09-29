@@ -9,11 +9,12 @@ import { RangeDatePipe } from '../../../../shared/pipes/RangeDatePipe.pipe';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { CategoryWCAPipe } from '../../../../shared/pipes/CategoryWCA.pipe';
 import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
+import { IconWcaComponent } from '../../../../shared/components/icon-wca/icon-wca.component';
 
 
 @Component({
   selector: 'table-competitions',
-  imports: [MatTableModule, MatSortModule, RangeDatePipe, MatTooltipModule, CategoryWCAPipe, MatPaginatorModule],
+  imports: [MatTableModule, MatSortModule, RangeDatePipe, MatTooltipModule, CategoryWCAPipe, MatPaginatorModule, IconWcaComponent],
   templateUrl: './table-competitions.component.html',
   styleUrl: './table-competitions.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,

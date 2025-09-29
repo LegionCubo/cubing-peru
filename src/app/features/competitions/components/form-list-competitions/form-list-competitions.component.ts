@@ -34,8 +34,6 @@ export class FormListCompetitionsComponent {
   competitionsService = inject(CompetitionsService);
 
   constructor(){
-    const uniqueCities = [...new Set(this.competitionsService.listCompetitions().map(c => c.cityName))];
-    this.cities.set(uniqueCities.sort());
 
     this.events.set(
       Categories_WCA.map(c => {
@@ -49,6 +47,9 @@ export class FormListCompetitionsComponent {
     effect(()=>{
       if(this.competitionsService.listCompetitions().length > 0){
         this.listCompetitions.set(this.competitionsService.listCompetitions());
+
+        const uniqueCities = [...new Set(this.competitionsService.listCompetitions().map(c => c.cityName))];
+        this.cities.set(uniqueCities.sort());
       }
     })
   }

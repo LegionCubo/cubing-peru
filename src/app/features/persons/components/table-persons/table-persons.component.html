@@ -1,0 +1,91 @@
+@if(this.persons().length > 0){
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8"  matSort (matSortChange)="announceSortChange($event)">
+
+        <ng-container matColumnDef="id">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by id">
+            WCA ID
+            </th>
+            <td mat-cell *matCellDef="let element"> {{ element.id }} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="name">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by name">
+            NOMBRE
+            </th>
+            <td mat-cell *matCellDef="let element" class="name-person">
+                <a [href]="'https://www.worldcubeassociation.org/persons/'+element.id" target="_blank">{{element.name}}</a>
+            </td>
+        </ng-container>
+
+        <ng-container matColumnDef="competitions">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by competitions">
+            COMPETICIONES
+            </th>
+            <td mat-cell *matCellDef="let element" class="events-competition">
+                {{ element.competitions }}
+            </td>
+        </ng-container>
+
+        <ng-container matColumnDef="lastCompetition">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by lastCompetition">
+                ULTIMA COMPETENCIA
+            </th>
+            <td mat-cell *matCellDef="let element"> 
+                {{element.lastCompetition.competitionName}} 
+            </td>
+        </ng-container>
+        
+        <ng-container matColumnDef="podiums">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by podiums">
+                PODIOS
+            </th>
+            <td mat-cell *matCellDef="let element"> {{element.podiums}} </td>
+        </ng-container>
+
+        <!-- ORGANIZADORES -->
+        <ng-container matColumnDef="competitionsOrganised">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by competitionsOrganised">
+                COMPETICIONES ORGANIZADAS
+            </th>
+            <td mat-cell *matCellDef="let element"> {{element.competitionsOrganised}} </td>
+        </ng-container>
+        <ng-container matColumnDef="lastOrganiserCompetition">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by lastOrganiserCompetition">
+                ULTIMA COMPETENCIA ORGANIZADA
+            </th>
+            <td mat-cell *matCellDef="let element"> 
+                <a [href]="'https://www.worldcubeassociation.org/competitions/'+element.lastOrganiserCompetition.competitionId" target="_blank">
+                    {{element.lastOrganiserCompetition.competitionName}}
+                </a>
+            </td>
+        </ng-container>
+
+        <!-- DELEGADOS -->
+        <ng-container matColumnDef="competitionsDelegated">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by competitionsDelegated">
+                COMPETICIONES DELEGADAS
+            </th>
+            <td mat-cell *matCellDef="let element"> {{element.competitionsDelegated}} </td>
+        </ng-container>
+        <ng-container matColumnDef="lastDelegatedCompetition">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by lastDelegatedCompetition">
+                ULTIMA COMPETENCIA DELEGADA
+            </th>
+            <td mat-cell *matCellDef="let element">
+                <a [href]="'https://www.worldcubeassociation.org/competitions/'+element.lastDelegatedCompetition.competitionId" target="_blank">
+                    {{element.lastDelegatedCompetition.competitionName}} 
+                </a>
+            </td>
+        </ng-container>
+
+
+        <!-- Filas -->
+        <tr mat-header-row *matHeaderRowDef="columnsTable()"></tr>
+        <tr mat-row *matRowDef="let row; columns: columnsTable();"></tr>
+    </table>
+
+    <mat-paginator [pageSizeOptions]="[25, 50, 100]"
+                    showFirstLastButtons
+                    aria-label="Select page of periodic elements">
+    </mat-paginator>
+}

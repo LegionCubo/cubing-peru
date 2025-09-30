@@ -1,0 +1,13 @@
+.filters-persons{
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+
+  .filters-basic{
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1.5fr .5fr;
+    gap: 10px;
+  }
+}

@@ -29,6 +29,7 @@ export class UserService {
         this.otherDay.set(true)
         
         window.localStorage.removeItem("competitions_list")
+        window.localStorage.removeItem("persons_list")
 
         this.saveDateCacheStore()
       }

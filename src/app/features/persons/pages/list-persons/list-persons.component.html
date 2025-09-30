@@ -1,0 +1,10 @@
+<section class="section section-competitions">
+    <h1 class="title">Competidores</h1>
+    <p class="font-secondary paragraph">Lista de todos los competidores del perú, consulta su ultima competencia, la cantidad de competiciones y podios en su carrera.</p>
+    
+    <persons-form-filter [listPersonsOriginal]="personsService.listPersons()" (formSended)="formSended($event)"></persons-form-filter>
+
+    @if(listPersons().length > 0){
+        <table-persons [persons]="listPersons()" [typePerson]="'p'"></table-persons>
+    }
+</section>

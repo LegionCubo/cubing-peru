@@ -52,7 +52,7 @@ export class NavbarComponent {
       icon: 'persons',
       children: [
         { name: 'Competidores',icon: 'persons',route: '/persons/competitors'},
-        { name: 'Organizadores',icon: 'persons',route: '/persons/organizers'},
+        { name: 'Organizadores',icon: 'persons',route: '/persons/organisers'},
         { name: 'Delegados',icon: 'persons',route: '/persons/delegates'}
       ]
     },

@@ -1,0 +1,12 @@
+<section class="section section-organisers">
+    <h1 class="title">Organizadores</h1>
+    <p class="font-secondary paragraph">
+        Lista de todos los organizadores de competiciones oficiales de el perú, consulta su ultima competencia organizada y la cantidad de competiciones organizadas.
+    </p>
+    
+    <persons-form-filter [listPersonsOriginal]="personsService.listOrganisers()" (formSended)="formSended($event)"></persons-form-filter>
+
+    @if(listPersons().length > 0){
+        <table-persons [persons]="listPersons()" [typePerson]="'o'"></table-persons>
+    }
+</section>

@@ -14,6 +14,11 @@ export const routes: Routes = [
         import('./features/competitions/competitions.routes').then(m => m.COMPETITIONS_ROUTES)
     },
     {
+      path: 'persons',
+      loadChildren: () =>
+        import('./features/persons/persons.routes').then(m => m.PERSONS_ROUTES)
+    },
+    {
       path:'**',
       redirectTo:''
     }

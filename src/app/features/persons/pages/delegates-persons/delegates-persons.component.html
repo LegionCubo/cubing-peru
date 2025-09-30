@@ -1,0 +1,12 @@
+<section class="section section-persons">
+    <h1 class="title">Delegados</h1>
+    <p class="font-secondary paragraph">
+        Lista de todos los delegados de competiciones oficiales de el perú, consulta su ultima competencia delegada y la cantidad de competiciones delegadas.
+    </p>
+    
+    <persons-form-filter [listPersonsOriginal]="personsService.listDelegates()" (formSended)="formSended($event)"></persons-form-filter>
+
+    @if(listPersons().length > 0){
+        <table-persons [persons]="listPersons()" [typePerson]="'d'"></table-persons>
+    }
+</section>

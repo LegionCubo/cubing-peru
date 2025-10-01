@@ -1,3 +1,8 @@
-<div class="map-competitions">
+<section class="map-competitions">
     <div #map class="map"></div>
-</div>
+
+    <div class="map-competitions__list">
+        <h1>MAPA COMPETENCIAS</h1>
+        <competitions-markers-map (markersCompetitions)="markersCompetitions($event)" (flyToMarker)="flyToMarker($event)"></competitions-markers-map>
+    </div>
+</section>

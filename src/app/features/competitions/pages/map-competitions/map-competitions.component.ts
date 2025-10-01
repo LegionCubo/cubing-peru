@@ -1,12 +1,18 @@
 import { ChangeDetectionStrategy, Component, effect, ElementRef, signal, viewChild } from '@angular/core';
 import mapboxgl from 'mapbox-gl'; // or "const mapboxgl = require('mapbox-gl');"
 import { environment } from '../../../../../environments/environment';
+import { MarkersMapCompetitionsComponent } from "../../components/markers-map-competitions/markers-map-competitions.component";
 
 mapboxgl.accessToken = environment.mapboxKey;
 
+interface Marker{
+  lat:number,
+  lng:number
+}
+
 @Component({
   selector: 'app-map-competitions',
-  imports: [],
+  imports: [MarkersMapCompetitionsComponent],
   templateUrl: './map-competitions.component.html',
   styleUrl: './map-competitions.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -19,12 +25,21 @@ export class MapCompetitionsComponent {
     lat: -8.579882038543204,
   })
   zoom = signal<number>(5.5);
+  markers = signal<Marker[]>([])
 
-  zoomEfect = effect(() => {
-    if(!this.map()) return;
-
-    this.map()!.setZoom(this.zoom());
-  })
+  constructor(){
+    effect(()=>{
+      if(!this.map()) return;
+      
+      const map = this.map()!;
+      
+      this.markers().forEach(c=>{
+        const mapboxMarker = new mapboxgl.Marker({
+          color: "#FF0000"
+        }).setLngLat(c).addTo(map)
+      })
+    })
+  }
 
   async ngAfterViewInit() {
     if(!this.divElement()?.nativeElement) return;
@@ -42,16 +57,22 @@ export class MapCompetitionsComponent {
   }
 
   mapListeners(map: mapboxgl.Map) {
-    map.on('zoomend', (event) => {
-      const newZoom = event.target.getZoom();
-      this.zoom.set(newZoom);
-    });
-
-    map.on('moveend', ()=>{
-      const center = map.getCenter();
-      this.coordinates.set(center);
-    })
 
     this.map.set(map);
+  }
+
+
+  markersCompetitions($event: Marker[]){
+    this.markers.set($event)
+  }
+
+  flyToMarker($event:Marker){
+    if(!this.map()) return;
+
+    this.map()?.flyTo({
+      center: $event,
+      zoom: 12
+    })
+
   }
 }

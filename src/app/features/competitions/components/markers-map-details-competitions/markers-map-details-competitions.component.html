@@ -1,0 +1,39 @@
+<div class="competition">
+    <table class="table">
+        <tr>
+            <td class="table__head">Ciudad</td><td>{{competition()?.cityName}}</td>
+        </tr>
+        <tr>
+            <td class="table__head">Local</td><td>{{competition()?.venue}}</td>
+        </tr>
+        <tr>
+            <td class="table__head">Direccion</td><td>
+                <a [href]="`https://www.google.com/maps/place/${competition()?.latitude},${competition()?.longitude}`" target="_blank">{{competition()?.venueAddress}}</a>
+            </td>
+        </tr>
+        <tr>
+            <td class="table__head">Delegados</td>
+            <td>
+                @for(delegate of competition()?.wcaDelegate; track delegate){
+                    <a [href]="'https://www.worldcubeassociation.org/persons/'+delegate" target="_blank" class="link_person delegate">{{delegate}}</a>
+                }
+            </td>
+        </tr>
+        <tr>
+            <td class="table__head">Organizadores</td>
+            <td>
+                @for(organiser of competition()?.organiser; track organiser){
+                    <a [href]="'https://www.worldcubeassociation.org/persons/'+organiser" target="_blank" class="link_person">{{organiser}}</a>
+                }
+            </td>
+        </tr>
+        <tr>
+            <td class="table__head">Categorias</td><td>
+                @for(event of competition()?.eventCompetitions; track event){
+                    <span [class]="'cubing-icon event-'+event" [matTooltip]="event | categoryWCA" matTooltipPosition="above"></span>
+                }
+            </td>
+        </tr>
+    </table>
+
+</div>

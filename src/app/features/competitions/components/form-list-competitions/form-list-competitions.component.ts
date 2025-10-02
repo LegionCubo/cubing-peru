@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, effect, inject, output, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, effect, inject, input, output, signal } from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {MatInputModule} from '@angular/material/input';
 import {MatSelectModule} from '@angular/material/select';
@@ -20,6 +20,8 @@ import { provideNativeDateAdapter } from '@angular/material/core';
 })
 export class FormListCompetitionsComponent { 
   listCompetitions = signal<Competition[]>([]);
+
+  isFormMap = input<boolean>(false); //PARA VALIDAR SI LO LLAMA DESDE MAPA COMPETENCIAS
   formSended = output<Competition[]>()
 
   cities = signal<string[]>([]);

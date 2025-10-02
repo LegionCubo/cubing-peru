@@ -15,7 +15,7 @@
             <td class="table__head">Delegados</td>
             <td>
                 @for(delegate of competition()?.wcaDelegate; track delegate){
-                    <a [href]="'https://www.worldcubeassociation.org/persons/'+delegate" target="_blank" class="link_person delegate">{{delegate}}</a>
+                    <a [href]="'https://www.worldcubeassociation.org/persons/'+delegate.id" target="_blank" class="link_person delegate">{{delegate.name}}</a>
                 }
             </td>
         </tr>
@@ -23,7 +23,11 @@
             <td class="table__head">Organizadores</td>
             <td>
                 @for(organiser of competition()?.organiser; track organiser){
-                    <a [href]="'https://www.worldcubeassociation.org/persons/'+organiser" target="_blank" class="link_person">{{organiser}}</a>
+                    @if(organiser.id){
+                        <a [href]="'https://www.worldcubeassociation.org/persons/'+organiser.id" target="_blank" class="link_person">{{organiser.name}}</a>
+                    }@else {
+                        <span class="link_person">{{organiser.name}}</span>
+                    }
                 }
             </td>
         </tr>

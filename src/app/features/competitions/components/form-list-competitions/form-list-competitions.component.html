@@ -1,27 +1,31 @@
 <div class="filters-competitions">
     <div class="filters-basic">
-        <mat-form-field (input)="searchCompetition($event)" class="search">
-            <mat-label>Buscar Competencia</mat-label>
-            <mat-icon matPrefix>search</mat-icon>
-            <input matInput placeholder="Buscar Competencia" maxlength="100">
-        </mat-form-field>
-        <mat-form-field>
-            <mat-label>Ciudad</mat-label>
-            <mat-select [(value)]="citySelected" (selectionChange)="filterSupreme()" multiple>
-                @for (city of cities(); track $index) {
-                    <mat-option [value]="city">{{city}}</mat-option>
-                }
-            </mat-select>
-        </mat-form-field>
-    
-        <mat-form-field>
-            <mat-label>Evento</mat-label>
-            <mat-select [(value)]="eventSelected" (selectionChange)="filterSupreme()" multiple>
-                @for (event of events(); track $index) {
-                    <mat-option [value]="event.id">{{event.name}}</mat-option>
-                }
-            </mat-select>
-        </mat-form-field>
+        
+        @if(!isFormMap()){
+            <mat-form-field (input)="searchCompetition($event)" class="search">
+                <mat-label>Buscar Competencia</mat-label>
+                <mat-icon matPrefix>search</mat-icon>
+                <input matInput placeholder="Buscar Competencia" maxlength="100">
+            </mat-form-field>
+
+            <mat-form-field>
+                <mat-label>Ciudad</mat-label>
+                <mat-select [(value)]="citySelected" (selectionChange)="filterSupreme()" multiple>
+                    @for (city of cities(); track $index) {
+                        <mat-option [value]="city">{{city}}</mat-option>
+                    }
+                </mat-select>
+            </mat-form-field>
+
+            <mat-form-field>
+                <mat-label>Evento</mat-label>
+                <mat-select [(value)]="eventSelected" (selectionChange)="filterSupreme()" multiple>
+                    @for (event of events(); track $index) {
+                        <mat-option [value]="event.id">{{event.name}}</mat-option>
+                    }
+                </mat-select>
+            </mat-form-field>
+        }
     </div>
     <div class="filter-date">
         <mat-form-field>

@@ -6,16 +6,19 @@ import { Competition } from '../../../../shared/models/competition.interface';
 import { CompetitionsService } from '../../../../core/services/competitions.service';
 import { RangeDatePipe } from '../../../../shared/pipes/RangeDatePipe.pipe';
 import { MarkersMapDetailsCompetitionsComponent } from "../markers-map-details-competitions/markers-map-details-competitions.component";
+import { FormListCompetitionsComponent } from "../form-list-competitions/form-list-competitions.component";
 
 @Component({
   selector: 'competitions-markers-map',
-  imports: [MatTableModule, MatButtonModule, MatIconModule, RangeDatePipe, MarkersMapDetailsCompetitionsComponent],
+  imports: [MatTableModule, MatButtonModule, MatIconModule, RangeDatePipe, MarkersMapDetailsCompetitionsComponent, FormListCompetitionsComponent],
   templateUrl: './markers-map-competitions.component.html',
   styleUrl: './markers-map-competitions.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class MarkersMapCompetitionsComponent { 
   dataSource = signal<Competition[]>([]);
+
+  competitionMarker = signal<string>('');
   
   markersCompetitions = output<{
     lat: number;
@@ -43,14 +46,7 @@ export class MarkersMapCompetitionsComponent {
           this.competitionsService.listCompetitions().filter(c=>this.today<c.competitionDate || (this.today>=c.competitionDate && this.today<=c.competitionEndDate)
         ))
 
-        const dataMarkers = this.dataSource().map(r=>{
-          return {
-            lat: r.latitude,
-            lng: r.longitude
-          }
-        })
-
-        this.markersCompetitions.emit(dataMarkers)
+        this.chargeTable()
       }
     })
   }
@@ -65,10 +61,32 @@ export class MarkersMapCompetitionsComponent {
     this.expandedElement = this.isExpanded(element) ? null : element;
   }
 
-  markerCompetition(latitude: number, longitude: number){
+  markerCompetition(nameCompetition:string, latitude: number, longitude: number){
+    this.competitionMarker.set(nameCompetition);
+
     this.flyToMarker.emit({
       lat: latitude,
       lng: longitude
-    })
+    });
   }
+
+  chargeTable(){
+    const dataMarkers = this.dataSource().map(r=>{
+      return {
+        lat: r.latitude,
+        lng: r.longitude
+      }
+    })
+
+    this.markersCompetitions.emit(dataMarkers)
+  }
+
+  formSended($event : Competition[]){
+    if($event.length==this.competitionsService.listCompetitions().length) return
+
+    this.dataSource.set($event)
+
+    this.chargeTable()
+  }
+
 }

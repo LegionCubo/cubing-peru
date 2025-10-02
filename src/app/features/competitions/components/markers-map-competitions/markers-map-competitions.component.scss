@@ -89,3 +89,20 @@ tr.example-element-row {
 .mat-mdc-paginator{
   background-color: var(--secondary-color);
 }
+
+.markerSelected{
+  color: var(--primary-color);
+}
+
+.table__conteiner{
+  width: 100%;
+  max-height: 500px;
+  overflow-y: auto;
+}
+
+.mat-header-row {
+  background: #e53935; /* rojo como en tu ejemplo */
+  color: white;
+  font-weight: bold;
+  z-index: 1000; /* para que quede sobre las filas */
+}

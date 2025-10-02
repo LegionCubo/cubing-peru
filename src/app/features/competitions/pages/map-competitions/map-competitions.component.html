@@ -1,7 +1,13 @@
 <section class="map-competitions">
     <div #map class="map"></div>
 
-    <div class="map-competitions__list">
+    <div class="map-competitions__btn">
+        <button matFab 
+            (click)="onClickBtnMenu()">
+            <mat-icon>filter_list</mat-icon>
+        </button>
+    </div>
+    <div class="map-competitions__list" [style.display]="menuCompetitions()?'block':'none'">
         <h1>MAPA COMPETENCIAS</h1>
         <competitions-markers-map (markersCompetitions)="markersCompetitions($event)" (flyToMarker)="flyToMarker($event)"></competitions-markers-map>
     </div>

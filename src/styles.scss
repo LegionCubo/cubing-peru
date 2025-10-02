@@ -100,6 +100,9 @@ h1, h2, h3, h4, h5, h6{
 
 .section{
     padding: 50px 30px;
+    @media only screen and (max-width: 900px) {
+        padding-top: 70px;
+    }
 }
 
 body{

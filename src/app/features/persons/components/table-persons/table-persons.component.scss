@@ -1,3 +1,15 @@
+.table_conteiner{
+  width: 100%;
+  max-width: 100%;
+
+  overflow: hidden;
+  overflow-x: auto;
+  .table{
+    width: 100%;
+    min-width: 1053px;
+  }
+}
+
 .mat-mdc-table .mat-mdc-header-cell{
   background-color: var(--primary-color);
   color: white;

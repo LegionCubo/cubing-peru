@@ -94,10 +94,17 @@ tr.example-element-row {
   color: var(--primary-color);
 }
 
-.table__conteiner{
+.table_conteiner{
   width: 100%;
+  max-width: 100%;
   max-height: 500px;
+  overflow: hidden;
+  overflow-x: auto;
   overflow-y: auto;
+  .table{
+    width: 100%;
+    min-width: 607px;
+  }
 }
 
 .mat-header-row {

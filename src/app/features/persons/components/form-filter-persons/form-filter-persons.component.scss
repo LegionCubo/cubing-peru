@@ -9,5 +9,11 @@
     display: grid;
     grid-template-columns: 1.5fr .5fr;
     gap: 10px;
+    @media only screen and (max-width: 750px) {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 0px;
+    }
   }
+
 }

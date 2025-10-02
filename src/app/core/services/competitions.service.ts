@@ -28,7 +28,9 @@ export class CompetitionsService {
       map(competitions =>
         competitions.map(c => ({
           ...c,
-          eventCompetitions: c.eventSpecs ? c.eventSpecs.split(' ') : []
+          eventCompetitions: c.eventSpecs ? c.eventSpecs.split(' ') : [],
+          latitude: Number(c.latitude) / 1e6,
+          longitude: Number(c.longitude) / 1e6
         }))
       )
     );

@@ -1,8 +1,9 @@
-import { ChangeDetectionStrategy, Component, HostListener, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, effect, HostListener, signal } from '@angular/core';
 import { UserService } from '../../../core/services/user.service';
 import { MatButtonModule } from '@angular/material/button';
 import { MatTooltipModule} from '@angular/material/tooltip';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink, RouterLinkActive } from '@angular/router';
+import { JsonPipe } from '@angular/common';
 
 interface MenuItem {
   id?: number;
@@ -14,7 +15,7 @@ interface MenuItem {
 
 @Component({
   selector: 'shared-navbar',
-  imports: [MatButtonModule, MatTooltipModule, RouterLink],
+  imports: [MatButtonModule, MatTooltipModule, RouterLink, RouterLinkActive],
   templateUrl: './navbar.component.html',
   styleUrl: './navbar.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -51,7 +52,7 @@ export class NavbarComponent {
       name: 'Personas',
       icon: 'persons',
       children: [
-        { name: 'Competidores',icon: 'persons',route: '/persons/competitors'},
+        { name: 'Competidores',icon: 'persons',route: '/persons'},
         { name: 'Organizadores',icon: 'persons',route: '/persons/organisers'},
         { name: 'Delegados',icon: 'persons',route: '/persons/delegates'}
       ]
@@ -64,25 +65,37 @@ export class NavbarComponent {
   ]
 
   itemSelected = signal<MenuItem | null>(null);
+  closeMenu = signal<boolean>(false);
 
-  constructor(public userService:UserService){}
+  constructor(public userService:UserService, private router: Router){
+    effect(()=>{
+      if(this.itemSelected() == null){
+        const item = this.listMenu.filter(lm=>lm.children?.find(r=>r.route == this.router.url ))
+        this.itemSelected.set(item[0])
+      }
+    })
+  }
 
   public userToggleMenu(){
     this.userService.toggleMenu(false);
-    this.itemSelected.set(null)
+    //this.itemSelected.set(null)
+    this.closeMenu.set(false);
   }
 
   onClickLink(){
     this.userService.menu.set(false)
-    this.itemSelected.set(null)
+    //this.itemSelected.set(null)
+    this.closeMenu.set(false);
   }
 
   onClickBtnMenu(itemMenu:MenuItem){
     
-    if(this.itemSelected()?.id === itemMenu.id){
-      this.itemSelected.set(null)
+    if(this.itemSelected()?.id === itemMenu.id && this.closeMenu()){
+      //this.itemSelected.set(null)
+      this.closeMenu.set(false);
     }else{
       this.itemSelected.set(itemMenu)
+      this.closeMenu.set(true);
     }
   }
 
@@ -93,7 +106,8 @@ export class NavbarComponent {
 
     if (!target.closest('header') && !target.closest('.header.open') && !target.closest('.btn__mobile__menu')) {
       this.userService.menu.set(false)
-      this.itemSelected.set(null)
+      //this.itemSelected.set(null)
+      this.closeMenu.set(false);
     }
   }
 }

@@ -40,6 +40,13 @@ export class MarkersMapCompetitionsComponent {
   today :string = new Date().toLocaleDateString('en-CA', { timeZone: 'America/Lima' });
 
   constructor(){
+    if(this.competitionsService.listCompetitions().length === 0){
+      this.competitionsService.getAllCompetition().subscribe(competitions=>{
+        this.competitionsService.listCompetitions.set(competitions);
+        this.competitionsService.saveCompetitionsCacheStore();
+      })
+    }
+
     effect(()=>{
       if(this.competitionsService.listCompetitions().length>0 && this.dataSource().length==0){
         this.dataSource.set(

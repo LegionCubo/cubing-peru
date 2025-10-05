@@ -15,21 +15,21 @@
                     [matTooltip]="item.name"
                     matTooltipPosition="right"
                     (click)="onClickBtnMenu(item)" [class.active]="itemSelected()?.id === item.id">
-                    <img [src]="'./icons/'+item.icon+'.svg'" alt="" width="25">
+                    <img [src]="'./icons/'+item.icon+'.svg'" alt="" height="20">
                 </button>
             }
         </div>
 
         
     </div>
-    <div class="header__menu" [class.open]="itemSelected()">
+    <div class="header__menu" [class.open]="closeMenu()">
         <span class="title font-primary">CUBING PERU</span>
         <nav class="nav">
             <span class="title__selected font-secondary">{{ itemSelected()?.name }}</span>
             <ul class="nav__menu">
                 @for(links of itemSelected()?.children; track links.name){
                     <li class="nav__menu__link">
-                        <a routerLink="{{links.route}}" class="font-secondary" (click)="onClickLink()">
+                        <a routerLink="{{links.route}}" routerLinkActive="active"  [routerLinkActiveOptions]="{ exact: true }" class="font-secondary" (click)="onClickLink()">
                             <img [src]="'./icons/'+links.icon+'.svg'" alt="" height="20">
                             <span>{{links.name}}</span>
                         </a>

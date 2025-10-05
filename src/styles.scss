@@ -45,6 +45,7 @@ html {
     
     @include mat.fab-overrides((
         container-color: var(--secondary-color),
+        container-elevation-shadow:none
     ));
 
     @include mat.tooltip-overrides((

@@ -1,0 +1,40 @@
+<section class="section section-rankings">
+    <h1 class="title">RANKINGS NACIONAL</h1>
+    <p class="font-secondary paragraph">Consulta tu posicion en el ranking nacional.</p>
+    
+    <div class="categories_selection">
+        <span class="sub-title font-primary">EVENTOS</span>
+        <div class="categories">
+            @for (cat of categories(); track $index) {
+                @if (!(modality()=='average' && cat.id=='333mbf')) {
+                    <button class="btn_cat" matMiniFab [matTooltip]="cat.id | categoryWCA" matTooltipPosition="above" 
+                    [class.selected]="eventId()==cat.id"
+                    (click)="goToCategory(cat.id)">
+                         <span [class]="'cubing-icon event-'+cat.id"></span>
+                    </button>
+                }
+            }
+        </div>
+    </div>
+
+    <nav mat-tab-nav-bar [tabPanel]="tabPanel" class="nav_modality">
+        <a mat-tab-link
+        (click)="goToModality('single')"
+        [active]="modality()=='single'" [class.active]="modality()=='single'"> SINGLE </a>
+        @if(eventId()!='333mbf'){
+            <a mat-tab-link
+            (click)="goToModality('average')"
+            [active]="modality()=='average'" [class.active]="modality()=='average'"> MEDIA </a>
+        }
+    </nav>
+
+    <rankings-form-filter [resultsRanking]="rankingResource.value()??[]" (formSended)="formSended($event)"></rankings-form-filter>
+
+    <mat-tab-nav-panel #tabPanel>
+        @if(rankingResource.hasValue()){
+            <rankings-table [results]="rankingResourcePrueba()" [modality]="modality()"></rankings-table>
+        }    
+    </mat-tab-nav-panel>
+
+    
+</section>

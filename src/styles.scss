@@ -71,6 +71,17 @@ html {
         container-text-font: 'Abel-Regular',
         filled-label-text-font: 'Abel-Regular',
     ));
+
+    @include mat.tabs-overrides((
+        label-text-font: 'Anton-Regular',
+        label-text-size: 20px,
+        active-indicator-height: 2px,
+        divider-height: 0px,
+        container-height:60px,
+        background-color:red
+        /* active-focus-label-text-color: #abc7ff,
+        active-label-text-color: #abc7ff, */
+    ));
 }
 
 /*PARA TITULOS, SUBTITULOS Y ENCABEZADOS*/
@@ -85,6 +96,9 @@ html {
 
 .title{
     font-size: 40px;
+}
+.sub-title{
+    font-size: 25px;
 }
 
 button{

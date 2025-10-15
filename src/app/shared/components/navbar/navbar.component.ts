@@ -37,7 +37,7 @@ export class NavbarComponent {
       name: 'Resultados',
       icon: 'results',
       children: [
-        { name: 'Rankings',icon: 'ranking',route: '/results'},
+        { name: 'Rankings',icon: 'ranking',route: '/rankings/333/single'},
         { name: 'Records', icon: 'records',route: '/records'},
         { name: 'Sum of Ranks', icon: 'sum',route: '/sor'}
       ]

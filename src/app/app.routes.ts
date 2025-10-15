@@ -19,6 +19,11 @@ export const routes: Routes = [
         import('./features/persons/persons.routes').then(m => m.PERSONS_ROUTES)
     },
     {
+      path: 'rankings',
+      loadChildren: () =>
+        import('./features/rankings/rankings.routes').then(m => m.RANKINGS_ROUTES)
+    },
+    {
       path:'**',
       redirectTo:''
     }

@@ -50,6 +50,19 @@ export class ForPersonsRankingsComponent {
     })
   }
 
+  ngOnInit(){
+    this.route.params.subscribe(params => {
+      const p_event = params['event'];
+      const p_modality = params['modality'];
+
+      const cats = this.categories().map(r=>r.id)
+
+      if (!cats.includes(p_event) || !["single","average"].includes(p_modality)) {
+        this.router.navigate(['/rankings', '333', 'single']);
+      }
+    });
+  }
+
   goToModality(modality:string){
     this.modalitySelected.set(modality);
     this.goToCategory(this.categorySelected());

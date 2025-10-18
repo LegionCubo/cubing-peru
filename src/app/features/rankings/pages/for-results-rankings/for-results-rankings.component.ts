@@ -1,0 +1,77 @@
+import { ChangeDetectionStrategy, Component, effect, inject, signal } from '@angular/core';
+import { MatButtonModule } from '@angular/material/button';
+import { CategoryWCAPipe } from '../../../../shared/pipes/CategoryWCA.pipe';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { TableRankingsComponent } from '../../components/table-rankings/table-rankings.component';
+import { MatTabsModule } from '@angular/material/tabs';
+import { FormFilterRankingsComponent } from '../../components/form-filter-rankings/form-filter-rankings.component';
+import { Categorie, Categories_WCA } from '../../../../core/data/Categories_WCA';
+import { ActivatedRoute, Router } from '@angular/router';
+import { rxResource, toSignal } from '@angular/core/rxjs-interop';
+import { map } from 'rxjs';
+import { ResultsService } from '../../../../core/services/results.service';
+import { ResultRanking } from '../../../../shared/models/results.interface';
+
+@Component({
+  selector: 'app-for-results-rankings',
+  imports: [MatButtonModule, CategoryWCAPipe, MatTooltipModule, TableRankingsComponent, MatTabsModule, FormFilterRankingsComponent],
+  templateUrl: './for-results-rankings.component.html',
+  styleUrl: './for-results-rankings.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+})
+export class ForResultsRankingsComponent { 
+  categories = signal<Categorie[]>(Categories_WCA.filter(c=>c.state==1));
+  route = inject(ActivatedRoute);
+
+  // Signals reactivas que escuchan los parámetros de la URL
+  eventId = toSignal(this.route.params.pipe(map(p => p['event'])));
+  modality = toSignal(this.route.params.pipe(map(p => p['modality'])));
+  modalitySelected = signal<string>(this.modality());
+  categorySelected = signal<string>(this.eventId());
+
+  resultsService = inject(ResultsService);
+  router = inject(Router);
+  
+  rankingResource = rxResource({
+    params:()=>({category: this.eventId(), modality: this.modality()}),
+    stream:({params})=>{
+      return this.resultsService.getRankingHistoricoPersons(params.category, params.modality)
+    }
+  })
+
+  rankingResourcePrueba = signal<ResultRanking[]>([]);
+
+  constructor(){
+    effect(()=>{
+      if(this.rankingResource.hasValue()){
+        this.rankingResourcePrueba.set(this.rankingResource.value())
+      }
+    })
+  }
+
+  ngOnInit(){
+    this.route.params.subscribe(params => {
+      const p_event = params['event'];
+      const p_modality = params['modality'];
+
+      const cats = this.categories().map(r=>r.id)
+
+      if (!cats.includes(p_event) || !["single","average"].includes(p_modality)) {
+        this.router.navigate(['/rankings','333', 'single', 'historico']);
+      }
+    });
+  }
+
+  goToModality(modality:string){
+    this.modalitySelected.set(modality);
+    this.goToCategory(this.categorySelected());
+  }
+  goToCategory(id: string) {
+    this.categorySelected.set(id);
+    this.router.navigate(['/rankings',id, this.modalitySelected(),'historico']);
+  }
+
+  formSended($event: ResultRanking[]) {
+    this.rankingResourcePrueba.set($event)
+  }
+}

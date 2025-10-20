@@ -1,0 +1,19 @@
+.filters-persons{
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+
+  .filters-basic{
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1.5fr .5fr;
+    gap: 10px;
+    @media only screen and (max-width: 750px) {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 0px;
+    }
+  }
+
+}

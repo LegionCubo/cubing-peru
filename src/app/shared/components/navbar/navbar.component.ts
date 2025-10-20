@@ -40,7 +40,7 @@ export class NavbarComponent {
         { name: 'Rankings',icon: 'ranking',route: '/rankings/333/single'},
         { name: 'Rankings Historico',icon: 'ranking',route: '/rankings/333/single/historico'},
         { name: 'Records', icon: 'records',route: '/records'},
-        { name: 'Sum of Ranks', icon: 'sum',route: '/sor'}
+        { name: 'Sum of Ranks', icon: 'sum',route: '/sor/single'}
       ]
     },
     /* {

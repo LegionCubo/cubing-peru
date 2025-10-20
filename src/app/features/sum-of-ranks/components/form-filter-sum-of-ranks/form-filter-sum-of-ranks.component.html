@@ -1,0 +1,17 @@
+<div class="filters-persons">
+    <div class="filters-basic">
+        <mat-form-field (input)="searchPerson($event)" class="search">
+            <mat-label for>Buscar competidor por nombre</mat-label>
+            <mat-icon matPrefix>search</mat-icon>
+            <input matInput placeholder="Buscar competidor" maxlength="100">
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>Género</mat-label>
+            <mat-select [(value)]="genderSelected" (selectionChange)="filterSupreme()" multiple>
+                <mat-option value="m">Hombre</mat-option>
+                <mat-option value="f">Mujer</mat-option>
+                <mat-option value="o">Otro</mat-option>
+            </mat-select>
+        </mat-form-field>
+    </div>
+</div>

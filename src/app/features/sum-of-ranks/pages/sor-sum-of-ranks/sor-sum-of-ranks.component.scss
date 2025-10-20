@@ -1,0 +1,33 @@
+.section-rankings{
+  .paragraph{
+    margin-top: 10px;
+    margin-bottom: 20px;
+  }
+  .categories_selection{
+    .categories{
+      margin-top: 5px;
+      display: flex;
+      gap: 5px;
+      .btn_cat{
+        background-color: var(--table-color);
+        border-radius: 5px;
+        .cubing-icon{
+          color: white;
+          font-size: 20px;
+        }
+      }
+      .btn_cat.selected{
+        background-color: var(--primary-color);
+      }
+    }
+  }
+
+  .nav_modality{
+    margin: 20px 0px;
+    width: 100%;
+    position: relative;background-color: var(--table-color);
+    .active{
+      background-color: var(--primary-color);
+    }
+  }
+}

@@ -1,0 +1,28 @@
+<section class="section section-rankings">
+    <h1 class="title">Sum of Ranks</h1>
+    <p class="font-secondary paragraph">Sum Of Ranks (SOR) o "suma de rankings", es un método utilizado para calcular la habilidad de un cubero en los 17 eventos de la WCA. La suma de rankings se calcula sumando el ranking nacional obtenido por un cubero en cada evento.</p>
+    <p class="font-secondary paragraph">Se utiliza a menudo como una medida del rendimiento general o la consistencia en varios eventos. Una suma de rankings más baja indica un mejor rendimiento general, ya que significa que el cubero logró consistentemente rankings más altos en los eventos.</p>
+    
+    <nav mat-tab-nav-bar [tabPanel]="tabPanel" class="nav_modality">
+        <a mat-tab-link
+        routerLink="/sor/single"
+        [active]="modality()=='single'" [class.active]="modality()=='single'"> SINGLE </a>
+
+        <a mat-tab-link
+        routerLink="/sor/average"
+        [active]="modality()=='average'" [class.active]="modality()=='average'"> MEDIA </a>
+        
+    </nav>
+
+    <!-- <rankings-form-filter [resultsRanking]="rankingResource.value()??[]" (formSended)="formSended($event)"></rankings-form-filter>
+ -->
+    <sum-of-ranks-form-filter [resultsSORRanking]="rankingResource.value()??[]" (formSended)="formSended($event)"></sum-of-ranks-form-filter>
+
+    <mat-tab-nav-panel #tabPanel>
+        @if(rankingResource.hasValue()){
+            <sum-of-ranks-table [results]="rankingResourcePrueba()" [modality]="modality()"></sum-of-ranks-table>
+        }
+    </mat-tab-nav-panel>
+
+    
+</section>

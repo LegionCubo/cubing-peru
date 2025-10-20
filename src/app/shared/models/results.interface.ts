@@ -23,3 +23,22 @@ export interface ResultRanking {
   gender: string;
   nrPosition:number;
 }
+
+
+export interface ResultsSORRanking{
+  categories: CategorySOR[] | Record<string, CategorySOR>;
+  gender: string;
+  nrPosition:number;
+  personId: string;
+  personName: string;
+  rankingSum:number;
+}
+
+export interface CategorySOR{
+  best:string;
+  cityName: string;
+  competitionId: string;
+  countryRank: number;
+  eventId: string;
+  roundTypeId: string;
+}

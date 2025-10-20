@@ -5,14 +5,12 @@ import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
 import { MatSort, MatSortModule, Sort } from '@angular/material/sort';
 import { MatTooltipModule } from '@angular/material/tooltip';
-import { TimeProcessorPipe } from '../../../../shared/pipes/time-processor.pipe';
-import { JsonPipe, LowerCasePipe } from '@angular/common';
 import { Categories_WCA } from '../../../../core/data/Categories_WCA';
 import { CategoryWCAPipe } from '../../../../shared/pipes/CategoryWCA.pipe';
 
 @Component({
   selector: 'sum-of-ranks-table',
-  imports: [MatTableModule, MatSortModule, MatTooltipModule, MatPaginatorModule, CategoryWCAPipe, LowerCasePipe, JsonPipe],
+  imports: [MatTableModule, MatSortModule, MatTooltipModule, MatPaginatorModule, CategoryWCAPipe],
   templateUrl: './table-sum-of-ranks.component.html',
   styleUrl: './table-sum-of-ranks.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,

@@ -3,6 +3,7 @@ import { Competition } from '../../shared/models/competition.interface';
 import { HttpClient } from '@angular/common/http';
 import { CategorySOR, ResultRanking, ResultsSORRanking } from '../../shared/models/results.interface';
 import { map } from 'rxjs';
+import { BestRecords } from '../../shared/models/records.interface';
 
 
 @Injectable({
@@ -54,5 +55,10 @@ export class ResultsService {
           }, {} as Record<string, CategorySOR>)
         }))
       ))
+  }
+
+  getRecordsNational(){
+    return this.http
+      .get<BestRecords>(`https://legioncubo.github.io/cubing-peru-api-v0/Records/best_records.json`)
   }
 }

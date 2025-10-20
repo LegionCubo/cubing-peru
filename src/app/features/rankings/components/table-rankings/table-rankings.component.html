@@ -33,7 +33,7 @@
                     RESULTADO
                     </th>
                     <td mat-cell *matCellDef="let element">
-                        {{ element.average | timeProcessor:element.eventId}}
+                        {{ element.average | timeProcessor:element.eventId:"average"}}
                     </td>
                 </ng-container>
             }

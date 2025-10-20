@@ -29,6 +29,11 @@ export const routes: Routes = [
         import('./features/sum-of-ranks/sum-of-ranks.routes').then(m => m.SOR_ROUTES)
     },
     {
+      path: 'records',
+      loadChildren: () =>
+        import('./features/records/records.routes').then(m => m.RECORDS_ROUTES)
+    },
+    {
       path:'**',
       redirectTo:''
     }

@@ -1,22 +1,18 @@
 import { ChangeDetectionStrategy, Component, effect, inject, signal } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
-import { CategoryWCAPipe } from '../../../../shared/pipes/CategoryWCA.pipe';
 import { MatTooltipModule } from '@angular/material/tooltip';
-import { TableRankingsComponent } from '../../../rankings/components/table-rankings/table-rankings.component';
 import { MatTabsModule } from '@angular/material/tabs';
-import { FormFilterRankingsComponent } from '../../../rankings/components/form-filter-rankings/form-filter-rankings.component';
 import { ResultsService } from '../../../../core/services/results.service';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { rxResource, toSignal } from '@angular/core/rxjs-interop';
-import { ResultRanking, ResultsSORRanking } from '../../../../shared/models/results.interface';
+import { ResultsSORRanking } from '../../../../shared/models/results.interface';
 import { map } from 'rxjs';
 import { TableSumOfRanksComponent } from "../../components/table-sum-of-ranks/table-sum-of-ranks.component";
-import { Categories_WCA } from '../../../../core/data/Categories_WCA';
 import { FormFilterSumOfRanksComponent } from "../../components/form-filter-sum-of-ranks/form-filter-sum-of-ranks.component";
 
 @Component({
   selector: 'app-sor-sum-of-ranks',
-  imports: [MatButtonModule, CategoryWCAPipe, MatTooltipModule, TableRankingsComponent, MatTabsModule, FormFilterRankingsComponent, TableSumOfRanksComponent, RouterLink, FormFilterSumOfRanksComponent],
+  imports: [MatButtonModule, MatTooltipModule, MatTabsModule, TableSumOfRanksComponent, RouterLink, FormFilterSumOfRanksComponent],
   templateUrl: './sor-sum-of-ranks.component.html',
   styleUrl: './sor-sum-of-ranks.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,

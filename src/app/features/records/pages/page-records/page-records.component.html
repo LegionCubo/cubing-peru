@@ -1,0 +1,17 @@
+<section class="section section-rankings">
+    <h1 class="title">RECORDS NACIONALES</h1>
+    <p class="font-secondary paragraph">
+        Los récords de la World Cube Association (WCA) son los tiempos más rápidos logrados para resolver varios rompecabezas en competencias oficiales de la WCA. Los récords se reconocen tanto para resoluciones individuales como para promedios en cada evento.
+    </p>
+    
+    @for (cat of categories(); track $index) {
+        <div class="record_category">
+            <div class="record_category__title font-secondary">
+                <span [class]="'cubing-icon event-'+cat.id"></span>
+                {{cat.name}}
+            </div>
+            <records-national-table [category]="cat.id" [recordResultSingle]="recordsNational()[cat.id].single" [recordResultAverage]="recordsNational()[cat.id].average"></records-national-table>
+        </div>
+    }
+    
+</section>

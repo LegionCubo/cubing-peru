@@ -1,0 +1,16 @@
+.section-rankings{
+  .paragraph{
+    margin-top: 10px;
+    margin-bottom: 20px;
+  }
+  .record_category{
+    margin-bottom: 20px;
+    &__title{
+      font-size: 20px;
+      margin-bottom: 5px;
+      .cubing-icon{
+        color: white;
+      }
+    }
+  }
+}

@@ -5,11 +5,11 @@ import { Pipe, type PipeTransform } from '@angular/core';
 })
 export class TimeProcessorPipe implements PipeTransform {
 
-  transform(value: number, cat:string = "" ): unknown {
+  transform(value: number, cat:string = "", modality:string =""): unknown {
     if(value == 0)return ''
     if(value == -1)return 'DNF'
     if(value == -2)return 'DNS'
-    if(cat == "333fm") return value
+    if(cat == "333fm" && modality=="") return value
     if(cat == "333mbf") {
       const segundosTotales = Math.floor((value % 10000000) / 100);
       const minutos = Math.floor(segundosTotales / 60);

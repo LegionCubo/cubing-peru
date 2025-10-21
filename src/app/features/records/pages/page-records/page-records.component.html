@@ -8,6 +8,11 @@
         <span class="filter_gender__text font-primary">Generó</span>
         <div class="filter_gender__group">
             <button class="btn_gender btn_gender--m font-secondary"
+                (click)="selectGender('')"
+                [class.selected]="genderSelected()==''">
+                Todos
+            </button>
+            <button class="btn_gender btn_gender--m font-secondary"
                 (click)="selectGender('m')"
                 [class.selected]="genderSelected()=='m'">
                 Masculino

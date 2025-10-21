@@ -7,6 +7,7 @@
     .categories{
       margin-top: 5px;
       display: flex;
+      flex-wrap: wrap;
       gap: 5px;
       .btn_cat{
         background-color: var(--table-color);

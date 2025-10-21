@@ -17,12 +17,18 @@ export class PageRecordsComponent {
 
   recordsNational = signal<BestRecords>({})
 
+  genderSelected = signal<"m" | "f" | "">("");
+
   resultsService = inject(ResultsService)
 
   constructor(){
     this.resultsService.getRecordsNational().subscribe(competitions=>{
       this.recordsNational.set(competitions);
     })
+  }
+
+  selectGender(gender: "m" | "f" | ""){
+    this.genderSelected.set(gender);
   }
 
 }

@@ -3,6 +3,22 @@
     <p class="font-secondary paragraph">
         Los récords de la World Cube Association (WCA) son los tiempos más rápidos logrados para resolver varios rompecabezas en competencias oficiales de la WCA. Los récords se reconocen tanto para resoluciones individuales como para promedios en cada evento.
     </p>
+
+    <div class="filter_gender">
+        <span class="filter_gender__text font-primary">Generó</span>
+        <div class="filter_gender__group">
+            <button class="btn_gender btn_gender--m font-secondary"
+                (click)="selectGender('m')"
+                [class.selected]="genderSelected()=='m'">
+                Masculino
+            </button>
+            <button class="btn_gender font-secondary" 
+                (click)="selectGender('f')"
+                [class.selected]="genderSelected()=='f'">
+                Femenino
+            </button>
+        </div>
+    </div>
     
     @for (cat of categories(); track $index) {
         <div class="record_category">
@@ -10,7 +26,21 @@
                 <span [class]="'cubing-icon event-'+cat.id"></span>
                 {{cat.name}}
             </div>
-            <records-national-table [category]="cat.id" [recordResultSingle]="recordsNational()[cat.id].single" [recordResultAverage]="recordsNational()[cat.id].average"></records-national-table>
+            @if(recordsNational()[cat.id]){    
+                @switch (genderSelected()) {
+                    @case ('') {
+                        <records-national-table [category]="cat.id" [recordResultSingle]="recordsNational()[cat.id].single" [recordResultAverage]="recordsNational()[cat.id].average"></records-national-table>
+                    }@case ('m') {
+                        <records-national-table [category]="cat.id" [recordResultSingle]="recordsNational()[cat.id].m!.single" 
+                        [recordResultAverage]="recordsNational()[cat.id].m!.average"></records-national-table>
+                    }@case ('f') {
+                        @if(recordsNational()[cat.id].f?.single){
+                            <records-national-table [category]="cat.id" [recordResultSingle]="recordsNational()[cat.id].f!.single" 
+                            [recordResultAverage]="recordsNational()[cat.id].f!.average"></records-national-table>
+                        }
+                    }
+                }
+            }
         </div>
     }
     

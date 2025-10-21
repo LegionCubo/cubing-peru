@@ -33,7 +33,7 @@
                 </th>
                 <td mat-cell *matCellDef="let element" class="name_competition">
                     <a [href]="'https://www.worldcubeassociation.org/competitions/'+element.competitionId" target="_blank">
-                        <!-- <span [class]="'fi fi-'+element.competitionCountryIso | lowercase"></span>  -->
+                        <span [class]="'fi fi-'+element.competitionCountryIso | lowercase"></span> 
                         {{element.competitionName}} 
                     </a>
                 </td>

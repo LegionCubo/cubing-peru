@@ -29,8 +29,6 @@ export class TableRecordsComponent {
         this.results.set([this.recordResultSingle()])
         this.dataSource.data = this.results();
       }
-
-      console.log(this.results());
     })    
   }
 }

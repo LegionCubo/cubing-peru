@@ -3,6 +3,39 @@
     margin-top: 10px;
     margin-bottom: 20px;
   }
+
+  .filter_gender{
+    display: grid;
+    gap: 5px;
+    margin-bottom: 20px;
+    &__text{
+      font-size: 20px;
+    }
+    &__group{
+      width: 500px;
+      display: flex;
+      border: 1px solid white;
+      border-radius: 5px;
+      background-color: var(--table-color);
+      .btn_gender{
+        width: 100%;
+        padding: 6px 0px;
+        font-size: 16px;
+        cursor: pointer;
+        transition: background-color .7s;
+      }
+      .btn_gender--m{
+        border-right: 1px solid white;
+      }
+      .btn_gender.selected{
+        background-color: var(--primary-color);
+      }
+      @media only screen and (max-width: 580px) {
+        width: 100%;
+      }
+    }
+  }
+
   .record_category{
     margin-bottom: 20px;
     &__title{

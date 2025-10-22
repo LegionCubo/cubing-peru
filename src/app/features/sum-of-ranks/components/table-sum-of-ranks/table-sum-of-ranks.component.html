@@ -1,6 +1,6 @@
-@if(this.results().length > 0){
+
     <div class="table_conteiner">
-        <table mat-table [dataSource]="dataSource" class="table mat-elevation-z8"  matSort (matSortChange)="announceSortChange($event)">
+        <table mat-table [dataSource]="dataSource" class="table mat-elevation-z8" matSort>
     
             <ng-container matColumnDef="nrPosition">
                 <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by nrPosition">
@@ -32,9 +32,19 @@
                     <th mat-header-cell *matHeaderCellDef [matTooltip]="cat | categoryWCA" matTooltipPosition="above">
                         <span [class]="'cubing-icon event-'+cat"></span>
                     </th>
-                    <td mat-cell *matCellDef="let element" [matTooltip]="cat | categoryWCA" matTooltipPosition="above"
+                    <td mat-cell *matCellDef="let element"
                     [class.top]="element.categories[cat].countryRank<=10" [class.noTop]="element.categories[cat].best==null">
-                        {{element.categories[cat].countryRank}}
+                        @if(element.categories[cat].best!=null){
+                            <span class="countryRank" (click)="viewTimes(element.categories[cat])" 
+                            [matTooltip]="cat | categoryWCA" matTooltipPosition="above">
+                                {{element.categories[cat].countryRank}}
+                            </span>
+                        }@else {
+                            <span class="countryRank"
+                            [matTooltip]="cat | categoryWCA" matTooltipPosition="above">
+                                {{element.categories[cat].countryRank}}
+                            </span>
+                        }
                     </td>
                 </ng-container>
             }
@@ -42,7 +52,7 @@
     
             <!-- Filas -->
             <tr mat-header-row *matHeaderRowDef="columnsTable()"></tr>
-            <tr mat-row *matRowDef="let row; columns: columnsTable();"></tr>
+            <tr mat-row *matRowDef="let row; columns: columnsTable()"></tr>
         </table>
     </div>
 
@@ -50,4 +60,3 @@
                     showFirstLastButtons
                     aria-label="Select page of periodic elements">
     </mat-paginator>
-}

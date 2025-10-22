@@ -2,12 +2,11 @@ import { ChangeDetectionStrategy, Component, effect, inject, signal } from '@ang
 import { Categorie, Categories_WCA } from '../../../../core/data/Categories_WCA';
 import { ResultsService } from '../../../../core/services/results.service';
 import { BestRecords } from '../../../../shared/models/records.interface';
-import { JsonPipe } from '@angular/common';
 import { TableRecordsComponent } from "../../components/table-records/table-records.component";
 
 @Component({
   selector: 'app-page-records',
-  imports: [JsonPipe, TableRecordsComponent],
+  imports: [TableRecordsComponent],
   templateUrl: './page-records.component.html',
   styleUrl: './page-records.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,

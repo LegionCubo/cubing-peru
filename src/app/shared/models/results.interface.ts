@@ -36,9 +36,10 @@ export interface ResultsSORRanking{
 
 export interface CategorySOR{
   best:string;
-  cityName: string;
+  competitionCountryIso:string;
   competitionId: string;
+  competitionName: string;
   countryRank: number;
   eventId: string;
-  roundTypeId: string;
+  times:string[];
 }

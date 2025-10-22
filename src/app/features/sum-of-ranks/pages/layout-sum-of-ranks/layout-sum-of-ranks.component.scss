@@ -1,6 +1,11 @@
 .main{
   width: calc(100% - 100px);
   min-height: 100vh;
+
+  //Para cuando hay un dialog
+  max-height: 100vh;
+  overflow-y: auto;
+
   margin-left: 100px;
 
   @media only screen and (max-width:900px){

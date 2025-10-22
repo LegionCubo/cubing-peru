@@ -1,0 +1,49 @@
+<div class="results_sor">
+    <div class="results_sor__title font-secondary">
+        <span [class]="'cubing-icon event-'+resultsSor().eventId"></span>
+        {{resultsSor().eventId | categoryWCA}}
+    </div>
+    <div class="results_sor__table">
+        <table mat-table [dataSource]="dataSource" class="table mat-elevation-z8">
+                
+            <ng-container matColumnDef="competitionName">
+                <th mat-header-cell *matHeaderCellDef>
+                    COMPETICIÓN
+                </th>
+                <td mat-cell *matCellDef="let element" class="name_competition">
+                    <a [href]="'https://www.worldcubeassociation.org/competitions/'+element.competitionId" target="_blank">
+                        @if(element.competitionCountryIso != 'XS'){
+                            <span [class]="'fi fi-'+element.competitionCountryIso | lowercase"></span> 
+                        }
+                        {{element.competitionName}} 
+                    </a>
+                </td>
+            </ng-container>
+    
+            <ng-container matColumnDef="best">
+                <th mat-header-cell *matHeaderCellDef>
+                Resultado
+                </th>
+                <td mat-cell *matCellDef="let element; let i = index">
+                    {{i==0?(element.best | timeProcessor:element.eventId):(element.average | timeProcessor:element.eventId:"average")}}
+                </td>
+            </ng-container>
+    
+            <ng-container matColumnDef="times">
+                <th mat-header-cell *matHeaderCellDef>
+                Resoluciones
+                </th>
+                <td mat-cell *matCellDef="let element" class="name-person">
+                    <div class="times">
+                        @for(time of element.times; track $index){
+                            <span>{{time | timeProcessor:element.eventId}}</span>
+                        }
+                    </div>
+                </td>
+            </ng-container>
+            
+            <tr mat-header-row *matHeaderRowDef="columnsTable()"></tr>
+            <tr mat-row *matRowDef="let row; columns: columnsTable(); let i = index"></tr>
+        </table>
+    </div>
+</div>

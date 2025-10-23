@@ -31,28 +31,30 @@ export class TableSumOfRanksComponent {
   dataSource = new MatTableDataSource();
   @ViewChild(MatPaginator) paginator?: MatPaginator;
 
-  constructor(){
-    effect(()=>{
-      if(this.results().length > 0){
-        this.dataSource.data = this.results();
-
-        switch (this.modality()) {
-          case 'single':
-            this.columnsTable.set(['nrPosition', 'personName', 'rankingSum',...this.categories()]);
-            break;
-          case 'average':
-            this.categories.set(Categories_WCA.filter(c=>c.state==1 && c.id != '333mbf').map(c=>c.id))
-            this.columnsTable.set(['nrPosition', 'personName', 'rankingSum',...this.categories()]);
-            break;
-          default:
-            this.columnsTable.set(['nrPosition', 'personName', 'rankingSum',...this.categories()]);
-            break;
-        }
-
-        this.dataSource.sort = this.sort;
-        this.dataSource.paginator = this.paginator;
+  constructor() {
+    // Solo observar cuando haya resultados
+    effect(() => {
+      const data = this.results();
+      if (data.length > 0) {
+        queueMicrotask(() => {
+          this.dataSource.data = data;
+        });
       }
-    })
+    });
+
+    // Otro effect para definir columnas
+    effect(() => {
+      const modality = this.modality();
+      switch (modality) {
+        case 'average':
+          this.categories.set(Categories_WCA.filter(c => c.state == 1 && c.id != '333mbf').map(c => c.id));
+          break;
+        default:
+          this.categories.set(Categories_WCA.filter(c => c.state == 1).map(c => c.id));
+          break;
+      }
+      this.columnsTable.set(['nrPosition', 'personName', 'rankingSum', ...this.categories()]);
+    });
   }
 
   @ViewChild(MatSort) sort?: MatSort;

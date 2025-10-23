@@ -1,4 +1,4 @@
-
+@if(results().length>0){
     <div class="table_conteiner">
         <table mat-table [dataSource]="dataSource" class="table mat-elevation-z8" matSort>
     
@@ -60,3 +60,4 @@
                     showFirstLastButtons
                     aria-label="Select page of periodic elements">
     </mat-paginator>
+}

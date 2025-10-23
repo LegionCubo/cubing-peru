@@ -8,6 +8,10 @@
     width: 100%;
     min-width: 1386px;
   }
+
+  @media only screen and (max-width: 536px) {
+    margin-bottom: 10px;
+  }
 }
 
 .mat-mdc-table .mat-mdc-header-cell{

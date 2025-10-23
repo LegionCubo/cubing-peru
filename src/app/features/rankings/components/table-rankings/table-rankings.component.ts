@@ -26,27 +26,32 @@ export class TableRankingsComponent {
   dataSource = new MatTableDataSource(this.results());
   @ViewChild(MatPaginator) paginator?: MatPaginator;
 
-  constructor(){
-    effect(()=>{
-      if(this.results().length > 0){
-        this.dataSource.data = this.results();
-
-        switch (this.modality()) {
-          case 'single':
-            this.columnsTable.set(['nrPosition', 'personName', 'best', 'competitionName']);
-            break;
-          case 'average':
-            this.columnsTable.set(['nrPosition', 'personName', 'average', 'competitionName', 'times']);
-            break;
-          default:
-            this.columnsTable.set(['nrPosition', 'personName', 'best', 'competitionName']);
-            break;
-        }
-
-        this.dataSource.sort = this.sort;
-        this.dataSource.paginator = this.paginator;
+  constructor() {
+    // Solo observar cuando haya resultados
+    effect(() => {
+      const data = this.results();
+      if (data.length > 0) {
+        queueMicrotask(() => {
+          this.dataSource.data = data;
+        });
       }
-    })
+    });
+
+    // Otro effect para definir columnas
+    effect(() => {
+      const modality = this.modality();
+      switch (modality) {
+        case 'single':
+          this.columnsTable.set(['nrPosition', 'personName', 'best', 'competitionName']);
+          break;  
+        case 'average':
+          this.columnsTable.set(['nrPosition', 'personName', 'average', 'competitionName', 'times']);
+          break;
+        default:
+          this.columnsTable.set(['nrPosition', 'personName', 'best', 'competitionName']);
+          break;
+      }
+    });
   }
 
   @ViewChild(MatSort) sort?: MatSort;

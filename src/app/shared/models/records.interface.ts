@@ -12,14 +12,14 @@ export interface RecordResult {
 
 // Representa los mejores resultados por género
 export interface GenderRecords {
-  single: RecordResult;
-  average: RecordResult;
+  single: RecordResult[];
+  average: RecordResult[];
 }
 
 // Representa una categoría (por ejemplo "333", "222", etc.)
 export interface CategoryRecords {
-  single: RecordResult;
-  average: RecordResult;
+  single: RecordResult[];
+  average: RecordResult[];
   m?: GenderRecords;
   f?: GenderRecords;
 }

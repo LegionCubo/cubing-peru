@@ -2,6 +2,7 @@ import { Injectable, signal } from '@angular/core';
 import { Competition } from '../../shared/models/competition.interface';
 import { HttpClient } from '@angular/common/http';
 import { map, tap } from 'rxjs';
+import { environment } from '../../../environments/environment';
 
 const loadCompetitionsFromLocalStorage = (): Competition[] => {
   const competitions = localStorage.getItem('competitions_list');
@@ -23,7 +24,9 @@ export class CompetitionsService {
   }
 
   getAllCompetition(){
-    return this.http.get<Competition[]>('https://legioncubo.github.io/cubing-peru-api-v0/Competitions/competitions.json')
+    return this.http.get<Competition[]>(
+      `${environment.apiUrl}/Competitions/competitions.json`
+    )
     .pipe(
       map(competitions =>
         competitions.map(c => ({

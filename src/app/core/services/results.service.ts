@@ -4,6 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { CategorySOR, ResultRanking, ResultsSORRanking } from '../../shared/models/results.interface';
 import { map } from 'rxjs';
 import { BestRecords } from '../../shared/models/records.interface';
+import { environment } from '../../../environments/environment';
 
 
 @Injectable({
@@ -16,7 +17,7 @@ export class ResultsService {
 
   getRankingPersons(category:string, modality: string){
       return this.http
-      .get<ResultRanking[]>(`https://legioncubo.github.io/cubing-peru-api-v0/Rankings/${modality}/${category}.json`)
+      .get<ResultRanking[]>(`${environment.apiUrl}/Rankings/${modality}/${category}.json`)
       .pipe(
         map(results =>
           results.map((r, index) => ({
@@ -29,7 +30,7 @@ export class ResultsService {
 
   getRankingHistoricoPersons(category:string, modality: string){
       return this.http
-      .get<ResultRanking[]>(`https://legioncubo.github.io/cubing-peru-api-v0/Results/${modality}/${category}.json`)
+      .get<ResultRanking[]>(`${environment.apiUrl}/Results/${modality}/${category}.json`)
       .pipe(
         map(results =>
           results.map((r, index) => ({
@@ -42,7 +43,7 @@ export class ResultsService {
 
   getSORPersons(modality:string){
     return this.http
-      .get<ResultsSORRanking[]>(`https://legioncubo.github.io/cubing-peru-api-v0/RankingsSum/${modality}_sumatoria.json`)
+      .get<ResultsSORRanking[]>(`${environment.apiUrl}/RankingsSum/${modality}_sumatoria.json`)
       .pipe(
         map(results =>
           results.map((r, index) => ({
@@ -59,6 +60,6 @@ export class ResultsService {
 
   getRecordsNational(){
     return this.http
-      .get<BestRecords>(`https://legioncubo.github.io/cubing-peru-api-v0/Records/best_records.json`)
+      .get<BestRecords>(`${environment.apiUrl}/Records/best_records.json`)
   }
 }

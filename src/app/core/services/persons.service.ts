@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable, signal } from '@angular/core';
 import { Delegate, Organizer, Person } from '../../shared/models/person.interface';
+import { environment } from '../../../environments/environment';
 
 const loadPersonsFromLocalStorage = (): Person[] => {
   const persons = localStorage.getItem('persons_list');
@@ -23,13 +24,13 @@ export class PersonsService {
   }
 
   getAllPerson(){
-    return this.http.get<Person[]>('https://legioncubo.github.io/cubing-peru-api-v0/Persons/persons.json')
+    return this.http.get<Person[]>(`${environment.apiUrl}/Persons/persons.json`)
   }
   getAllOrganisers(){
-    return this.http.get<Organizer[]>('https://legioncubo.github.io/cubing-peru-api-v0/Persons/Organisers/organisers.json')
+    return this.http.get<Organizer[]>(`${environment.apiUrl}/Persons/Organisers/organisers.json`)
   }
   getAllDelegates(){
-    return this.http.get<Delegate[]>('https://legioncubo.github.io/cubing-peru-api-v0/Persons/Delegates/delegates.json')
+    return this.http.get<Delegate[]>(`${environment.apiUrl}/Persons/Delegates/delegates.json`)
   }
 
 }

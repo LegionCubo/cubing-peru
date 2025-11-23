@@ -6,14 +6,19 @@ const targetPath = './src/environments/environment.ts';
 const targetPathDev = './src/environments/environment.development.ts';
 
 const mapboxKey = process.env['MAPBOX_KEY'];
+const apiUrl = process.env['API_URL'];
 
 if(!mapboxKey) {
   throw new Error('MAPBOX_KEY is not set');
 }
+if(!apiUrl){
+  throw new Error('API_URL is not set');
+}
 
 const envFileContent = `
 export const environment = {
-  mapboxKey: "${mapboxKey}"
+  mapboxKey: "${mapboxKey}",
+  apiUrl: "${apiUrl}"
 };
 `;
 

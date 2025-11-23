@@ -13,8 +13,8 @@ import { TimeProcessorPipe } from '../../../../shared/pipes/time-processor.pipe'
 })
 export class TableRecordsComponent { 
   category = input.required<string>()
-  recordResultSingle=input.required<RecordResult>()
-  recordResultAverage=input<RecordResult>()
+  recordResultSingle=input.required<RecordResult[]>()
+  recordResultAverage=input<RecordResult[]>()
 
   results = signal<RecordResult[]>([]);
   dataSource = new MatTableDataSource(this.results());
@@ -23,10 +23,10 @@ export class TableRecordsComponent {
   constructor(){
     effect(()=>{
       if(this.category()!="333mbf"){
-        this.results.set([this.recordResultSingle(), this.recordResultAverage()!])
+        this.results.set([...this.recordResultSingle(), ...this.recordResultAverage()!])
         this.dataSource.data = this.results();
       }else{
-        this.results.set([this.recordResultSingle()])
+        this.results.set(this.recordResultSingle())
         this.dataSource.data = this.results();
       }
     })    

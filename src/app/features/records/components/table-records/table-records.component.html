@@ -6,7 +6,7 @@
                 <th mat-header-cell *matHeaderCellDef>
                 TIPO
                 </th>
-                <td mat-cell *matCellDef="let element; let i = index"> {{i==0?'Single':'Average'}} </td>
+                <td mat-cell *matCellDef="let element"> {{element.best!=undefined?'Single':'Average'}} </td>
             </ng-container>
     
             <ng-container matColumnDef="personName">
@@ -22,8 +22,8 @@
                 <th mat-header-cell *matHeaderCellDef>
                 Resultado
                 </th>
-                <td mat-cell *matCellDef="let element; let i = index">
-                    {{i==0?(element.best | timeProcessor:category()):(element.average | timeProcessor:category():"average")}}
+                <td mat-cell *matCellDef="let element">
+                    {{element.best!=undefined?(element.best | timeProcessor:category()):(element.average | timeProcessor:category():"average")}}
                 </td>
             </ng-container>
             

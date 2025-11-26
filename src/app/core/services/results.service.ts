@@ -1,7 +1,7 @@
 import { Injectable, signal } from '@angular/core';
 import { Competition } from '../../shared/models/competition.interface';
 import { HttpClient } from '@angular/common/http';
-import { CategorySOR, ResultRanking, ResultsSORRanking } from '../../shared/models/results.interface';
+import { CategoryKinch, CategorySOR, ResultRanking, ResultsKinchRanking, ResultsSORRanking } from '../../shared/models/results.interface';
 import { map } from 'rxjs';
 import { BestRecords } from '../../shared/models/records.interface';
 import { environment } from '../../../environments/environment';
@@ -54,6 +54,23 @@ export class ResultsService {
             acc[cat.eventId] = cat;
             return acc;
           }, {} as Record<string, CategorySOR>)
+        }))
+      ))
+  }
+
+  getKinchPersons(){
+    return this.http
+      .get<ResultsKinchRanking[]>(`${environment.apiUrl}/KinchRank/results_kinch_rank.json`)
+      .pipe(
+        map(results =>
+          results.map((r, index) => ({
+            ...r,
+            nrPosition: index + 1,
+            // convertimos categories[] a objeto { [eventId]: category }
+            categories: (r.categories as CategoryKinch[]).reduce((acc, cat) => {
+            acc[cat.eventId] = cat;
+            return acc;
+          }, {} as Record<string, CategoryKinch>)
         }))
       ))
   }

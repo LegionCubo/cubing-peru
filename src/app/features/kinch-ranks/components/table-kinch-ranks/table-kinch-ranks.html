@@ -1,0 +1,63 @@
+@if(results().length>0){
+    <div class="table_conteiner">
+        <table mat-table [dataSource]="dataSource" class="table mat-elevation-z8" matSort>
+    
+            <ng-container matColumnDef="nrPosition">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by nrPosition">
+                #
+                </th>
+                <td mat-cell *matCellDef="let element"> {{ element.nrPosition }} </td>
+            </ng-container>
+    
+            <ng-container matColumnDef="personName">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by personName">
+                NOMBRE
+                </th>
+                <td mat-cell *matCellDef="let element" class="name-person">
+                    <a [href]="'https://www.worldcubeassociation.org/persons/'+element.personId" target="_blank">{{element.personName}}</a>
+                </td>
+            </ng-container>
+    
+            <ng-container matColumnDef="kinchAvg">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by kinchAvg">
+                    TOTAL
+                </th>
+                <td mat-cell *matCellDef="let element">
+                    {{element.kinchAvg | number:'1.2-2':'en-US'}}
+                </td>
+            </ng-container>
+
+            @for (cat of categories(); track $index) {
+                <ng-container [matColumnDef]="cat">
+                    <th mat-header-cell *matHeaderCellDef [matTooltip]="cat | categoryWCA" matTooltipPosition="above">
+                        <span [class]="'cubing-icon event-'+cat"></span>
+                    </th>
+                    <td mat-cell *matCellDef="let element"
+                    [class.top]="element.categories[cat].kinch==100.0" [class.noTop]="element.categories[cat].kinch==0.0">
+                        @if(element.categories[cat].best!=null){
+                            <span class="countryRank" 
+                            [matTooltip]="cat | categoryWCA" matTooltipPosition="above">
+                                {{element.categories[cat].kinch | number:'1.2-2':'en-US'}}
+                            </span>
+                        }@else {
+                            <span class="countryRank"
+                            [matTooltip]="cat | categoryWCA" matTooltipPosition="above">
+                                {{element.categories[cat].kinch | number:'1.2-2':'en-US'}}
+                            </span>
+                        }
+                    </td>
+                </ng-container>
+            }
+    
+    
+            <!-- Filas -->
+            <tr mat-header-row *matHeaderRowDef="columnsTable()"></tr>
+            <tr mat-row *matRowDef="let row; columns: columnsTable()"></tr>
+        </table>
+    </div>
+
+    <mat-paginator [pageSizeOptions]="[25, 50, 100]"
+                    showFirstLastButtons
+                    aria-label="Select page of periodic elements">
+    </mat-paginator>
+}

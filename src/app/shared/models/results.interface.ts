@@ -43,3 +43,23 @@ export interface CategorySOR{
   eventId: string;
   times:string[];
 }
+
+export interface ResultsKinchRanking{
+  categories: CategoryKinch[] | Record<string, CategoryKinch>;
+  gender: string;
+  nrPosition:number;
+  personId: string;
+  personName: string;
+  kinchAvg:number;
+  kinchSum:number;
+}
+
+export interface CategoryKinch{
+  best:string;
+  competitionCountryIso:string;
+  competitionId: string;
+  competitionName: string;
+  countryRank: number;
+  eventId: string;
+  kinch:number;
+}

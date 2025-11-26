@@ -34,6 +34,11 @@ export const routes: Routes = [
         import('./features/records/records.routes').then(m => m.RECORDS_ROUTES)
     },
     {
+      path: 'kinch',
+      loadChildren: () =>
+        import('./features/kinch-ranks/kinch-ranks.routes').then(m => m.KINCH_ROUTES)
+    },
+    {
       path:'**',
       redirectTo:''
     }

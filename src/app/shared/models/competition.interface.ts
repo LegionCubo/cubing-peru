@@ -4,12 +4,12 @@ export interface Competition {
   venue: string;
   latitude: number;        // si quieres, cambiar a number
   longitude: number;       // si quieres, cambiar a number
-  cityName: string;
+  city_name: string;
   countryId: string;
-  venueAddress: string;
+  venue_address: string;
   venueDetails: string;
   cellName: string;
-  eventSpecs: string;
+  event_specs: string;
   eventCompetitions: string[];
   wcaDelegate: PersonDelegateOrganiser[];   // lista de WCA IDs
   organiser: PersonDelegateOrganiser[];     // lista de WCA IDs u otros IDs

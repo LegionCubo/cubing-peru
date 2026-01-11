@@ -50,7 +50,7 @@ export class FormListCompetitionsComponent {
       if(this.competitionsService.listCompetitions().length > 0){
         this.listCompetitions.set(this.competitionsService.listCompetitions());
 
-        const uniqueCities = [...new Set(this.competitionsService.listCompetitions().map(c => c.cityName))];
+        const uniqueCities = [...new Set(this.competitionsService.listCompetitions().map(c => c.city_name))];
         this.cities.set(uniqueCities.sort());
       }
     })
@@ -67,7 +67,7 @@ export class FormListCompetitionsComponent {
       listCompetitionsFiltered = listCompetitionsFiltered.filter(c=> c.competitionDate >= date && c.competitionEndDate <= dateEnd);
     }
     if(this.citySelected.length>0){ 
-      listCompetitionsFiltered = listCompetitionsFiltered.filter(c=> this.citySelected.includes(c.cityName));
+      listCompetitionsFiltered = listCompetitionsFiltered.filter(c=> this.citySelected.includes(c.city_name));
     }
     if(this.eventSelected.length>0){
       listCompetitionsFiltered = listCompetitionsFiltered.filter(c=> c.eventCompetitions.some(event=> this.eventSelected.includes(event)));

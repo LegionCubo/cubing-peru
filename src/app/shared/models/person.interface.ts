@@ -3,7 +3,7 @@
 export interface Person {
   name: string;
   gender: 'm' | 'f' | string ;
-  id: string;
+  wca_id: string;
   countryId: string;
   competitions: number;
   lastCompetition: Competition ;

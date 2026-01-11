@@ -14,7 +14,7 @@
                 NOMBRE
                 </th>
                 <td mat-cell *matCellDef="let element" class="name-person">
-                    <a [href]="'https://www.worldcubeassociation.org/persons/'+element.personId" target="_blank">{{element.personName}}</a>
+                    <a [href]="'https://www.worldcubeassociation.org/persons/'+element.person_id" target="_blank">{{element.person_name}}</a>
                 </td>
             </ng-container>
             
@@ -43,7 +43,7 @@
                     COMPETICIÓN
                 </th>
                 <td mat-cell *matCellDef="let element" class="name_competition">
-                    <a [href]="'https://www.worldcubeassociation.org/competitions/'+element.competitionId" target="_blank">
+                    <a [href]="'https://www.worldcubeassociation.org/competitions/'+element.competition_id" target="_blank">
                         <span [class]="'fi fi-'+element.competitionCountryIso | lowercase"></span> {{element.competitionName}} 
                     </a>
                 </td>

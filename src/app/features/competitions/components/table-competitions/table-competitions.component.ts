@@ -24,7 +24,7 @@ import { provideNativeDateAdapter } from '@angular/material/core';
 export class TableCompetitionsComponent { 
 
   competitions = input<Competition[]>([])
-  columnsTable = ['competitionDate', 'name', 'eventCompetitions', 'cityName','resultados']
+  columnsTable = ['competitionDate', 'name', 'eventCompetitions', 'city_name','resultados']
 
   today :string = new Date().toLocaleDateString('en-CA', { timeZone: 'America/Lima' });
 

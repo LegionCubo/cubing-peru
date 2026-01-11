@@ -1,14 +1,14 @@
 <div class="competition">
     <table class="table">
         <tr>
-            <td class="table__head">Ciudad</td><td>{{competition()?.cityName}}</td>
+            <td class="table__head">Ciudad</td><td>{{competition()?.city_name}}</td>
         </tr>
         <tr>
             <td class="table__head">Local</td><td>{{competition()?.venue}}</td>
         </tr>
         <tr>
             <td class="table__head">Direccion</td><td>
-                <a [href]="`https://www.google.com/maps/place/${competition()?.latitude},${competition()?.longitude}`" target="_blank">{{competition()?.venueAddress}}</a>
+                <a [href]="`https://www.google.com/maps/place/${competition()?.latitude},${competition()?.longitude}`" target="_blank">{{competition()?.venue_address}}</a>
             </td>
         </tr>
         <tr>

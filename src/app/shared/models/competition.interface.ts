@@ -2,8 +2,8 @@ export interface Competition {
   id: string;
   name: string;
   venue: string;
-  latitude: number;        // si quieres, cambiar a number
-  longitude: number;       // si quieres, cambiar a number
+  latitude_microdegrees: number;        // si quieres, cambiar a number
+  longitude_microdegrees: number;       // si quieres, cambiar a number
   city_name: string;
   countryId: string;
   venue_address: string;

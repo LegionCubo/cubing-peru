@@ -1,12 +1,233 @@
 .main{
-  width: calc(100% - 100px);
+  position: relative;
   min-height: 100vh;
-  height: 300vh;
   margin-left: 100px;
+  padding-bottom: 120px;
+  overflow: hidden;
+  .home{
+    width: 100%;
+    height: 100vh;
+    padding: 20px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-image: 
+    linear-gradient(rgba(37, 37, 37, 0.7), rgba(37, 37, 37, 0.7)),
+    url(/images/nats_peru.webp);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &__content{
+      text-align: center;
+      .title{
+        font-size: 100px;
+        line-height: 1; 
+      }
+      .subtitle{
+        font-size: 30px;
+        color: var(--primary-color);
+      }
+      .paragraph{
+        width: 80%;
+        margin: 20px auto;
+        font-size: 18px;
+      }
+      .btn_comunity{
+        display: inline-block;
+        background-color: var(--primary-color);
+        text-decoration: none;
+        padding: 10px;
+        border-radius: 7px;
+      }
+    }
+  }
+
+  .section{
+    width: 80%;
+    margin: auto;
+    padding: 120px 0px;
+    &__head{
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+      @media only screen and (max-width: 700px) {
+        display: grid;
+        gap: 5px;
+      }
+    }
+    &__title{
+      font-size: 30px;
+    }
+    
+  }
+
+  .about{
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 100px;
+    &__texts{
+      display: grid;
+    }
+    &__img{
+      width: 100%;
+      border-radius: 10px;
+    }
+    @media only screen and (max-width:1100px){
+      gap: 20px;
+    }
+    @media only screen and (max-width:768px){
+      grid-template-columns: 1fr;
+      &__texts{
+        gap: 10px;
+      }
+    }
+  }
+
+  .comunnity{
+    background-color: var(--bg-primary-color);
+    padding: 30px 20px;
+    text-align: center;
+    border-radius: 10px;
+    span{
+      color: #A1A1A1;
+      font-size: 20px;
+    }
+    .statistics{
+      width: 80%;
+      display: flex;
+      justify-content: space-between;
+      margin: auto;
+      margin-top: 20px;
+      &__item{
+        display: grid;
+        justify-content: center ;
+        .item_count{
+          color: var(--primary-color);
+          font-size: 60px;
+        }
+        .item_text{
+          font-size: 20px;
+        }
+      }
+      @media only screen and (max-width: 950px) {
+        display: grid;
+        justify-content: center;
+      }
+    }
+  }
+
+  .nationals{
+    &__paragraph{
+      margin: 20px 0px;
+    }
+    &__list{
+      width: 100%;
+      display: flex;
+      gap: 20px;
+      overflow-x: auto;
+      .item{
+        text-decoration: none;
+        display: inline-block;
+      }
+    }
+  }
+
+  .collaborators{
+    .section__title{
+      text-align: center;
+      margin-bottom: 50px;
+    }
+  }
 
   @media only screen and (max-width:900px){
     width: 100%;
     margin-left: 0px;
 
+  }
+}
+
+.conteiner_red_shape{
+  position: absolute;
+  z-index: -1;
+  width: 100%;
+  height: 800px;
+}
+
+.red-shape {
+  width: 100%;
+  height: 100%;
+  background: #ff0000;
+}
+
+.red-shape.right{
+  clip-path: polygon(
+    0 40%,
+    100% 0,
+    100% 60%,
+    0 100%
+  );
+  opacity: 0;
+}
+
+.red-shape.left{
+  clip-path: polygon(
+    0 0,
+    100% 40%,
+    100% 100%,
+    0 60%
+  );
+  opacity: 0;
+}
+
+.one{
+  top: 919px;
+}
+.two{
+  top: 1950px;
+}
+.three{
+  top: 2980px;
+}
+.four{
+  top: 4012px;
+}
+.five{
+  top: 5043px;
+}
+.six{
+  top: 6074px;
+}
+
+.red-shape.right.animated {
+  animation: diagonalEnterRight .7s ease-out forwards;
+}
+
+.red-shape.left.animated {
+  animation: diagonalEnterLeft .7s ease-out forwards;
+}
+
+
+@keyframes diagonalEnterRight {
+  0% {
+    opacity: 0;
+    transform: translate(100%, -300px);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(0, 0);
+  }
+}
+
+@keyframes diagonalEnterLeft {
+  0% {
+    opacity: 0;
+    transform: translate(-100%, -300px);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(0, 0);
   }
 }

@@ -11,7 +11,7 @@
         <button
           matIconButton
           aria-label="expand row"
-          (click)="markerCompetition(element.id, element.latitude, element.longitude)"
+          (click)="markerCompetition(element.id, element.latitude_microdegrees, element.longitude_microdegrees)"
           class="example-toggle-button">
           <mat-icon [style.color]="competitionMarker()!=element.id?'white':'var(--primary-color)'">place</mat-icon>
         </button>

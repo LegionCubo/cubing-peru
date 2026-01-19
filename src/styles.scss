@@ -38,6 +38,7 @@ html {
     --primary-color: #FF0000;
     --secondary-color: #252525;
     --tertiary-color: #6A6A6A;
+    --bg-primary-color: #3F3E3E;
 
     --text-color: white;
     --text-secondary-color: #757575;
@@ -126,4 +127,10 @@ body{
 a{
     color: white;
     outline: none;
+}
+
+.link-img{
+    display: flex;
+    align-items: center;
+    gap: 5px;
 }

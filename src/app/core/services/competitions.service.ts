@@ -32,8 +32,8 @@ export class CompetitionsService {
         competitions.map(c => ({
           ...c,
           eventCompetitions: c.event_specs ? c.event_specs.split(' ') : [],
-          latitude: Number(c.latitude) / 1e6,
-          longitude: Number(c.longitude) / 1e6
+          latitude_microdegrees: Number(c.latitude_microdegrees) / 1e6,
+          longitude_microdegrees: Number(c.longitude_microdegrees) / 1e6
         }))
       )
     );

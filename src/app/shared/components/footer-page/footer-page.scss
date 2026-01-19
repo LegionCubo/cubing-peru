@@ -1,0 +1,33 @@
+.footer_page{
+  width: calc(100% - 100px);
+  background-color: var(--bg-primary-color);
+  margin-left: 100px;
+  &__content{
+    width: 80%;
+    margin: auto;
+    padding: 30px 0px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    .logo_footer{
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      margin-bottom: 20px;
+      .text{
+        font-size: 30px;
+      }
+    }
+    @media only screen and (max-width: 830px) {
+      grid-template-columns: 1fr;
+    }
+  }
+  &__copyright{
+    padding: 40px;
+    border-top: 1px solid var(--tertiary-color);
+    text-align: center;
+  }
+  @media only screen and (max-width: 900px) {
+    width: 100%;
+    margin-left: 0px;
+  }
+}

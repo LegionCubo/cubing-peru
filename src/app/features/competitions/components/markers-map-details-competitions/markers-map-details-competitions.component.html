@@ -8,7 +8,7 @@
         </tr>
         <tr>
             <td class="table__head">Direccion</td><td>
-                <a [href]="`https://www.google.com/maps/place/${competition()?.latitude},${competition()?.longitude}`" target="_blank">{{competition()?.venue_address}}</a>
+                <a [href]="`https://www.google.com/maps/place/${competition()?.latitude_microdegrees},${competition()?.longitude_microdegrees}`" target="_blank">{{competition()?.venue_address}}</a>
             </td>
         </tr>
         <tr>

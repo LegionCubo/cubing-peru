@@ -1,0 +1,20 @@
+<div class="competitions">
+    @for (item of upcomingCompetitions(); track item.id) {
+      <div class="competitions__item">
+        <div class="date font-primary">
+          {{item.monthDate}}
+          <div class="day">{{item.dayDate}}</div>
+        </div>
+        <div class="details font-secondary">
+          <span>Competencia oficial WCA</span>
+          <div class="details__name font-primary">{{item.name}}</div>
+          <a class="details__direction" [href]="`https://www.google.com/maps/place/${item.latitude_microdegrees},${item.longitude_microdegrees}`" target="_blank"><mat-icon>place</mat-icon>{{item.venue}}, {{item.city_name}}</a>
+        </div>
+        <div class="navigate">
+            <a [href]="'https://www.worldcubeassociation.org/competitions/'+item.id" target="_blank">
+                <mat-icon class="navigate__icon">open_in_new</mat-icon>
+            </a>
+        </div>
+      </div>
+    }
+  </div>

@@ -1,0 +1,14 @@
+<div class="collaborators">
+    @for (cola of listCollaborators; track $index) {
+        <div class="collaborator">
+            <img [src]="cola.photoCollaborator" [alt]="'Foto Colaborador ' + cola.nameCollaborator" width="150" class="collaborator__photo">
+            <div class="collaborator__name font-primary">
+                {{cola.nameCollaborator}}
+            </div>
+            <div class="collaborator__position font-secondary">
+                {{cola.positionCollaborator}}
+            </div>
+        </div>
+        
+    }
+</div>

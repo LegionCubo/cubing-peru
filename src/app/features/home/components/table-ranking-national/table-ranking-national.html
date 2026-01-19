@@ -1,0 +1,46 @@
+@if(this.results().length > 0){
+    <div class="table_conteiner">
+        <table mat-table [dataSource]="dataSource" class="table mat-elevation-z8">
+    
+            <ng-container matColumnDef="nr">
+                <th mat-header-cell *matHeaderCellDef>
+                NR
+                </th>
+                <td mat-cell *matCellDef="let element; let o = index"> {{ o + 1}} </td>
+            </ng-container>
+    
+            <ng-container matColumnDef="personName">
+                <th mat-header-cell *matHeaderCellDef>
+                NOMBRE
+                </th>
+                <td mat-cell *matCellDef="let element" class="name-person">
+                    <a [href]="'https://www.worldcubeassociation.org/persons/'+element.personIdNr" target="_blank">{{element.nameNr}}</a>
+                </td>
+            </ng-container>
+            
+            <ng-container matColumnDef="result">
+                <th mat-header-cell *matHeaderCellDef>
+                Resultado
+                </th>
+                <td mat-cell *matCellDef="let element">
+                    {{element.averageNr | timeProcessor:'333':"average"}}
+                </td>
+            </ng-container>
+            
+            <ng-container matColumnDef="competitionName">
+                <th mat-header-cell *matHeaderCellDef>
+                    COMPETICIÓN
+                </th>
+                <td mat-cell *matCellDef="let element" class="name_competition">
+                    <a [href]="'https://www.worldcubeassociation.org/competitions/'+element.idCompetitionNr" target="_blank">
+                        <span [class]="'fi fi-'+element.competitionCountryIso | lowercase"></span> 
+                        {{element.competitionNr}} 
+                    </a>
+                </td>
+            </ng-container>
+            
+            <tr mat-header-row *matHeaderRowDef="columnsTable()"></tr>
+            <tr mat-row *matRowDef="let row; columns: columnsTable(); let i = index"></tr>
+        </table>
+    </div>
+}

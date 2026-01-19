@@ -1,0 +1,39 @@
+.table_conteiner{
+  width: 100%;
+  max-width: 100%;
+
+  overflow: hidden;
+  overflow-x: auto;
+  .table{
+    width: 100%;
+    min-width: 1053px;
+  }
+}
+
+.mat-mdc-table .mat-mdc-header-cell{
+  background-color: var(--primary-color);
+  color: white;
+}
+
+.mat-mdc-cell.mdc-data-table__cell{
+  color: white;
+}
+.mat-mdc-paginator{
+  background-color: var(--secondary-color);
+}
+.name-person a{
+  color: white;
+}
+
+.name_competition a{
+  text-decoration: none;
+}
+
+.time{
+  padding: 0px 10px;
+}
+
+.times{
+  display: flex;
+  gap: 10px;
+}

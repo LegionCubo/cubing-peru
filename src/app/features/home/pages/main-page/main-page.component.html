@@ -1,3 +1,122 @@
 <main class="main">
-    
+    <div class="home">
+        <div class="home__content">
+            <h1 class="title">CUBING PERU</h1>
+            <h2 class="subtitle">Comunidad de speedcubing del perú</h2>
+            <p class="paragraph font-secondary">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quas nam reiciendis quia molestias qui cumque vel laborum maxime, ad fugiat aliquid aliquam, magnam a voluptatem iusto quae, necessitatibus consectetur ratione?</p>
+            <a href="" class="btn_comunity font-secondary">Únete a la comunidad</a>
+        </div>
+    </div>
+
+    <section class="section about">
+        <div class="about__texts">
+            <h2 class="section__title">Sobre nosotros</h2>
+            <p class="font-secondary">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quaerat dolor quidem at quasi ipsum cupiditate, suscipit ab aliquam atque quod doloribus veritatis nulla debitis sit mollitia. Hic quibusdam aliquid tenetur fugit accusantium debitis distinctio, tempora molestiae sed assumenda provident, ipsum aliquam esse, vero nostrum culpa perferendis qui dignissimos. Repellat, incidunt!</p>
+        </div>
+        <img class="about__img" src="./images/nats_peru.webp" alt="" width="200">
+    </section>
+
+    <div class="conteiner_red_shape one">
+        <div class="red-shape right"></div>
+    </div>
+    <div class="conteiner_red_shape two">
+        <div class="red-shape left"></div>
+    </div>
+    <div class="conteiner_red_shape three">
+        <div class="red-shape right"></div>
+    </div>
+    <div class="conteiner_red_shape four">
+        <div class="red-shape left"></div>
+    </div>
+    <div class="conteiner_red_shape five">
+        <div class="red-shape right"></div>
+    </div>
+    <div class="conteiner_red_shape six">
+        <div class="red-shape left"></div>
+    </div>
+
+    <section class="section comunnity">
+        <h2 class="section__title">Nuestra comunidad en números</h2>
+        <span class="font-secondary">Perú es clave</span>
+
+        <div class="statistics">
+            <div class="statistics__item">
+                <div class="item_count font-primary">{{info?.competitors}}+</div>
+                <span class="item_text font-secondary">Competidores WCA</span>
+            </div>
+            <div class="statistics__item">
+                <div class="item_count font-primary">{{info?.competitions}}+</div>
+                <span class="item_text font-secondary">Competiciones en Perú</span>
+            </div>
+            <div class="statistics__item">
+                <div class="item_count font-primary">{{info?.recordNational ?? 465 | timeProcessor:'333'}}s</div>
+                <span class="item_text font-secondary">Récord Nacional 3x3x3</span>
+            </div>
+        </div>
+    </section>
+
+    <section class="section about">
+        <div class="about__texts">
+            <h2 class="section__title">Nuestro logo</h2>
+            <p class="font-secondary">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quaerat dolor quidem at quasi ipsum cupiditate, suscipit ab aliquam atque quod doloribus veritatis nulla debitis sit mollitia. Hic quibusdam aliquid tenetur fugit accusantium debitis distinctio, tempora molestiae sed assumenda provident, ipsum aliquam esse, vero nostrum culpa perferendis qui dignissimos. Repellat, incidunt!</p>
+        </div>
+        <img class="about__img" src="./icons/cubing_peru.svg" alt="" width="200">
+    </section>
+
+    <section class="section nationals">
+        <h2 class="section__title">Perú nationals</h2>
+        <p class="font-secondary nationals__paragraph">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quaerat dolor quidem at quasi ipsum cupiditate, suscipit ab aliquam atque quod doloribus veritatis nulla debitis sit mollitia. Hic quibusdam aliquid tenetur fugit accusantium debitis distinctio, tempora molestiae sed assumenda provident, ipsum aliquam esse, vero nostrum culpa perferendis qui dignissimos. Repellat, incidunt!</p>
+        <div class="nationals__list">
+            <a class="item" href="https://www.worldcubeassociation.org/competitions/PeruNationals2023">
+                <img src="https://teamcubeforce.github.io/images/competitions/PeruNationals2023.jpg" alt="" width="200">
+            </a>
+            <a class="item" href="https://www.worldcubeassociation.org/competitions/PeruNationals2023">
+                <img src="https://teamcubeforce.github.io/images/competitions/PeruNationals2023.jpg" alt="" width="200">
+            </a>
+            <a class="item" href="https://www.worldcubeassociation.org/competitions/PeruNationals2023">
+                <img src="https://teamcubeforce.github.io/images/competitions/PeruNationals2023.jpg" alt="" width="200">
+            </a>
+            <a class="item" href="https://www.worldcubeassociation.org/competitions/PeruNationals2023">
+                <img src="https://teamcubeforce.github.io/images/competitions/PeruNationals2023.jpg" alt="" width="200">
+            </a>
+            <a class="item" href="https://www.worldcubeassociation.org/competitions/PeruNationals2023">
+                <img src="https://teamcubeforce.github.io/images/competitions/PeruNationals2023.jpg" alt="" width="200">
+            </a>
+            <a class="item" href="https://www.worldcubeassociation.org/competitions/PeruNationals2023">
+                <img src="https://teamcubeforce.github.io/images/competitions/PeruNationals2023.jpg" alt="" width="200">
+            </a>
+        </div>
+    </section>
+
+    <section class="section upcoming">
+        <div class="section__head">
+            <h2 class="section__title">Proximas competencias</h2>
+            <a routerLink="/competitions/list" class="font-secondary link-img">
+                Ver Todas Las Competencias <img src="./icons/arrow.svg" alt="" width="15">
+            </a>
+        </div>
+
+        <home-upcoming-competitions [upcomingCompetitions]="info?.upcomingCompetitions"></home-upcoming-competitions>
+    </section>
+
+    <section class="section">
+        <div class="section__head">
+            <h2 class="section__title">Ranking nacional</h2>
+            <a routerLink="/rankings/333/average" class="font-secondary link-img">
+                Ver Ranking Completos <img src="./icons/arrow.svg" alt="" width="15">
+            </a>
+        </div>
+
+        @if (info?.rankingNational) {
+            <home-table-ranking-national [results]="info!.rankingNational"></home-table-ranking-national>
+        }
+    </section>
+
+    <section class="section collaborators">
+        <h2 class="section__title">Colaboradores y Patrocinadores</h2>
+        
+        <home-list-collaborators></home-list-collaborators>
+    </section>
 </main>
+
+<shared-footer-page></shared-footer-page>

@@ -30,6 +30,7 @@ export class UserService {
         
         window.localStorage.removeItem("competitions_list")
         window.localStorage.removeItem("persons_list")
+        window.localStorage.removeItem("information")
 
         this.saveDateCacheStore()
       }

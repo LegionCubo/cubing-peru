@@ -80,8 +80,8 @@ export class MarkersMapCompetitionsComponent {
   chargeTable(){
     const dataMarkers = this.dataSource().map(r=>{
       return {
-        lat: r.latitude,
-        lng: r.longitude
+        lat: r.latitude_microdegrees,
+        lng: r.longitude_microdegrees
       }
     })
 

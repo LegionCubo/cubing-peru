@@ -25,7 +25,11 @@
                 Resultado
                 </th>
                 <td mat-cell *matCellDef="let element; let i = index">
-                    {{i==0?(element.best | timeProcessor:element.eventId):(element.average | timeProcessor:element.eventId:"average")}}
+                    @if(element.best){
+                        {{element.best | timeProcessor:element.eventId}}
+                    }@else if(element.average){
+                        {{element.average | timeProcessor:element.eventId:"average"}}
+                    }
                 </td>
             </ng-container>
     

@@ -24,7 +24,7 @@
                     RESULTADO
                     </th>
                     <td mat-cell *matCellDef="let element" class="events-competition">
-                        {{ element.best | timeProcessor:element.eventId}}
+                        {{ element.best | timeProcessor:element.event_id}}
                     </td>
                 </ng-container>
             }@else {
@@ -33,7 +33,7 @@
                     RESULTADO
                     </th>
                     <td mat-cell *matCellDef="let element">
-                        {{ element.average | timeProcessor:element.eventId:"average"}}
+                        {{ element.average | timeProcessor:element.event_id:"average"}}
                     </td>
                 </ng-container>
             }
@@ -57,7 +57,7 @@
                     <td mat-cell *matCellDef="let element">
                         @for(time of element.times; track $index){
                             <span class="time">
-                                {{ time | timeProcessor:element.eventId}}
+                                {{ time | timeProcessor:element.event_id}}
                             </span>
                         }
                     </td>

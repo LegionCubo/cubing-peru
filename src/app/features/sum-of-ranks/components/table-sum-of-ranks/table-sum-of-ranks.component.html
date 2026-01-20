@@ -33,8 +33,8 @@
                         <span [class]="'cubing-icon event-'+cat"></span>
                     </th>
                     <td mat-cell *matCellDef="let element"
-                    [class.top]="element.categories[cat].countryRank<=10" [class.noTop]="element.categories[cat].best==null">
-                        @if(element.categories[cat].best!=null){
+                    [class.top]="element.categories[cat].countryRank<=10" [class.noTop]="element.categories[cat].best===null">
+                        @if(element.categories[cat].best!=null || element.categories[cat].average!=null){
                             <span class="countryRank" (click)="viewTimes(element.categories[cat])" 
                             [matTooltip]="cat | categoryWCA" matTooltipPosition="above">
                                 {{element.categories[cat].countryRank}}

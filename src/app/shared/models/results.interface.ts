@@ -8,12 +8,12 @@ export interface ResultRanking {
   value4: string;
   value5: string;
   times: string[];
-  competitionId: string;
-  eventId: string;
-  roundTypeId: string;
-  personName: string;
-  personId: string;
-  formatId: string;
+  competition_id: string;
+  event_id: string;
+  round_type_id: string;
+  person_name: string;
+  person_id: string;
+  format_id: string;
   regionalSingleRecord: string;
   regionalAverageRecord: string;
   personCountryId: string;

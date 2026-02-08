@@ -62,7 +62,7 @@ export class FormFilterRankingsComponent {
       //Cuando hay mas de dos palabras que buscar
       //Busca en la competiciones que ya han sido filtradas con la primera palabra
       this.resultsRankingPrueba().forEach((comp)=>{
-        let arrayPerson = comp.personName.split(' ').map(c=>c.toLowerCase());
+        let arrayPerson = comp.person_name.split(' ').map(c=>c.toLowerCase());
         
         const ultimo_valor =arrayPalabras.length - 1
         const exist_1 = arrayPalabras.filter((p:string, i:number)=>arrayPerson.includes(p) && i!=ultimo_valor);
@@ -75,7 +75,7 @@ export class FormFilterRankingsComponent {
     else{
       //Cuando hay una palabra que buscar
       this.resultsRankingOriginal().forEach((comp)=>{
-        let arrayPerson = comp.personName.split(' ');
+        let arrayPerson = comp.person_name.split(' ');
           arrayPerson.forEach((c)=>{
             if(c.toLowerCase().startsWith(arrayPalabras[0]) && !newlist.includes(comp)){
               newlist.push(comp);
